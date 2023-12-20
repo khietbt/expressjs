@@ -1,10 +1,7 @@
-title: MEAN
-
+color_scheme: dark
 description: Tutorials on MEAN - Mongo, Express, Angular and NodeJs
-
 remote_theme: just-the-docs/just-the-docs
-
+title: MEAN
 url: https://khietbt.github.io/mean
-
 plugins:
   - jekyll-remote-theme 
