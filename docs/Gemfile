@@ -2,5 +2,4 @@ source 'https://rubygems.org'
 
 gem "jekyll"
 
-# gem "just-the-docs"        # always download the latest release
 gem "jekyll-remote-theme"
