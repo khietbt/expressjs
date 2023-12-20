@@ -6,16 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="86c2e9a7-20b3-4b1d-aae7-17c0724d2ee1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/docs/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,7 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1703043080736</updated>
-      <workItem from="1703043082088" duration="13374000" />
+      <workItem from="1703043082088" duration="15736000" />
     </task>
     <servers />
   </component>
