@@ -16,9 +16,9 @@ parent: Getting Started
 
 ---
 
-# Setup a Express.js Project
+# Set up an Express.js Project
 
-It is time to build a backend project from the ground up with Express.js.
+It is time to build a backend project from the ground up with Express.js. Source code of this step can be found [here](https://github.com/khietbt/mean/tree/master/getting-started/backend).
 
 ## Init the folder
 
@@ -111,18 +111,18 @@ npm i -D nodemon ts-node
 And a small change in scripts in package.json:
 
 ```json
-// package.json
-"scripts": {
+{
+  "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts"
+  }
 }
 ```
 
 Finally, create a nodemon.json with contents:
 
 ```json
-// nodemon.json
 {
   "watch": ["src"],
   "ext": "ts",
