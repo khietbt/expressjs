@@ -4,7 +4,7 @@ layout: default
 nav_order: 1
 ---
 
-<details open markdown="block">
+<details closed markdown="block">
   <summary>
     Table of contents
   </summary>
