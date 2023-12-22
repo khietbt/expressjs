@@ -3,6 +3,7 @@ title: Prepare a Backend Using Express.js
 layout: default
 nav_order: 2
 parent: Getting Started
+has_toc: true
 ---
 
 <details closed markdown="block">
@@ -18,7 +19,8 @@ parent: Getting Started
 
 # Set up an Express.js Project
 
-It is time to build a backend project from the ground up with Express.js. Source code of this step can be found [here](https://github.com/khietbt/mean/tree/master/getting-started/backend).
+It is time to build a backend project from the ground up with Express.js. Source code of this step can be
+found [here](https://github.com/khietbt/mean/tree/master/getting-started/backend).
 
 ## Init the folder
 
@@ -102,7 +104,8 @@ Hello world!
 
 ## Watch file changes
 
-In development environment, we change codes constantly, and will be happy if our changes are reflected in browsers. This can be done by installing nodemon:
+In development environment, we change codes constantly, and will be happy if our changes are reflected in browsers. This
+can be done by installing nodemon:
 
 ```shell
 npm i -D nodemon ts-node
@@ -124,7 +127,9 @@ Finally, create a nodemon.json with contents:
 
 ```json
 {
-  "watch": ["src"],
+  "watch": [
+    "src"
+  ],
   "ext": "ts",
   "exec": "concurrently \"npx tsc --watch\" \"ts-node src/index.ts\""
 }
@@ -134,4 +139,82 @@ Restart the server and see changes in browsers when you edit codes:
 
 ```shell
 npm run dev
+```
+
+# Improve quality Node.js plugins
+
+Node.js community has many plugins to help us improve code quality, then please add it into your project:
+
+```shell
+cd backend
+npm install eslint prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser ts-node tsc-alias tsconfig-paths rimraf --save-dev
+```
+
+They need some configuration files:
+
+* `.eslintrc`
+
+```json
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "eslint-config-prettier",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "prettier/prettier": [
+      "warn",
+      {
+        "arrowParens": "always",
+        "semi": false,
+        "trailingComma": "none",
+        "tabWidth": 2,
+        "endOfLine": "auto",
+        "useTabs": false,
+        "singleQuote": true,
+        "printWidth": 120,
+        "jsxSingleQuote": true
+      }
+    ]
+  }
+}
+```
+
+* `.eslintignore`
+
+```ignore
+node_modules/
+dist/
+```
+
+* `.prettierrc`
+
+```json
+{
+  "arrowParens": "always",
+  "semi": false,
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "endOfLine": "auto",
+  "useTabs": false,
+  "singleQuote": true,
+  "printWidth": 120,
+  "jsxSingleQuote": true
+}
+```
+
+* `.prettierignore`
+
+```
+node_modules/
+dist/
 ```
