@@ -1,12 +1,15 @@
-import express, { Express, Request, Response } from 'express';
+import express from 'express';
 import bodyParser from 'body-parser';
+import { BaseController } from '@src/controllers';
 
 class Application {
-  public application: Express;
+  public application: express.Application;
+  public controllers: BaseController[];
   public port: number;
 
-  public constructor(port: number) {
+  public constructor(controllers: BaseController[], port: number) {
     this.application = express();
+    this.controllers = controllers;
     this.port = port;
 
     this.initializeMiddlewares();
@@ -14,18 +17,7 @@ class Application {
   }
 
   public initializeRoutes() {
-    this.application.get('/', (request: Request, response: Response) => {
-      response.send('Hello world!');
-    });
-
-    this.application.post('/', (request: Request, response: Response) => {
-      response.send({
-        hostname: request.hostname,
-        path: request.path,
-        method: request.method,
-        body: request.body
-      });
-    });
+    this.controllers.forEach((c) => this.application.use('/', c.getRoute()));
   }
 
   public listen() {
