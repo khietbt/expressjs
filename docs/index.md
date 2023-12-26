@@ -15,18 +15,16 @@ nav_order: 1
 
 ---
 
-# MEAN
+# Express.js
 {: .no_toc }
 
-[What Is the MEAN Stack?](https://www.mongodb.com/mean-stack) It stands for MongoDB, Express.js, Angular and Node.js - a
-tech stack for developing web applications.
+[Express.js](https://expressjs.com) is a Node.js framework for writing web applications. It is usually mentioned as a part of MEAN / MERN stack.
 
-## Installing the MEAN stack
+## Installation
 
 ### nvm
 
-[nvm](https://github.com/nvm-sh/nvm) is a version manager for Node.js. Please
-follow [this instruction](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) to install it.
+[nvm](https://github.com/nvm-sh/nvm) is a version manager for Node.js. Please follow [this instruction](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) to install it.
 
 ### Node.js
 
@@ -42,12 +40,19 @@ nvm install --lts
 npm install -g npm
 npm install -g express-generator
 ```
+## Getting Started
 
-### Angular.js
+After installing tools, we can test immediately by creating a new project:
 
-Angular.js is just a library, and it will be embedded when creating the front-end.
+```shell
+express getting-started && cd getting-started && npm install && npm start
+```
 
-### MongoDB
+It is time to open your browser and visit http://localhost:3000. A greeting will be displayed:
 
-Please take a look at [this official instruction](https://www.mongodb.com/docs/manual/installation) to understand how
-to install MongoDB on your computer.
+```
+Express
+Welcome to Express
+```
+
+It is done.
