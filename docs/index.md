@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Express.js
 layout: default
 nav_order: 1
 ---
@@ -28,7 +28,7 @@ nav_order: 1
 
 ### Node.js
 
-Please install the latest lts version of Node.js using nvm
+Please install the latest lts version of Node.js using nvm:
 
 ```shell
 nvm install --lts
@@ -37,21 +37,23 @@ nvm install --lts
 ### npm & Express.js
 
 ```shell
-npm install -g npm
-npm install -g express-generator
+npm install -g yarn
+echo 'export PATH="$PATH:$(yarn global bin)"' >> .bashrc
+yarn global add express-generator
 ```
-## Getting Started
+## Hello world
 
 After installing tools, we can test immediately by creating a new project:
 
 ```shell
-express getting-started && cd getting-started && npm install && npm start
+express hello-world && cd hello-world && yarn && yarn start
 ```
 
 It is time to open your browser and visit http://localhost:3000. A greeting will be displayed:
 
 ```
 Express
+
 Welcome to Express
 ```
 
