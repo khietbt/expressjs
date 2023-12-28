@@ -2,7 +2,6 @@
 title: Getting Started
 layout: default
 nav_order: 2
-has_children: true
 ---
 
 # Getting Started
@@ -148,7 +147,7 @@ dist/
 
 ### `.editorconfig`
 
-```properties
+```text
 [*]
 indent_size=2
 indent_style=space
