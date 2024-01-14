@@ -1,17 +1,8 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "prettier",
-    "simple-import-sort"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "eslint-config-prettier",
-    "prettier"
-  ],
+  "plugins": ["@typescript-eslint", "prettier", "simple-import-sort"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "eslint-config-prettier", "prettier"],
   "rules": {
     // increase the severity of rules so they are auto-fixable
     "simple-import-sort/imports": "error",
