@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Linting before commiting"
+echo
+
+for FILE in $(find ${PWD} -type f -name package.json | grep -v node_modules); do
+	DIRNAME=$(dirname ${FILE})
+	echo "Started linting changes in ${DIRNAME}"
+	cd ${DIRNAME} && npx lint-staged
+	echo "Finished linting changes in ${DIRNAME}"
+	echo
+done
