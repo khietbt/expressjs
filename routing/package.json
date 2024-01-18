@@ -14,7 +14,7 @@
     "prettier:fix": "prettier --write ."
   },
   "keywords": [
-    "routing"
+    "dotenv"
   ],
   "author": "khietbt",
   "license": "ISC",
