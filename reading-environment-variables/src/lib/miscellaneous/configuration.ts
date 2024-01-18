@@ -1,13 +1,12 @@
 import { EnvironmentUtils } from '@lib/utils';
+import * as _package from '@topdir/package.json';
 import dotenv from 'dotenv';
 import path from 'path';
-
-import * as _package from '../../../package.json';
 
 const pkg: any = _package as any;
 
 dotenv.config({
-  path: path.join(process.cwd(), '.env', EnvironmentUtils.getRunningEnvironment())
+  path: path.join(process.cwd(), `.env.${EnvironmentUtils.getRunningEnvironment()}`)
 });
 
 export const configuration = {
