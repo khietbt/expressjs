@@ -15,16 +15,16 @@ nav_order: 1
 
 ---
 
-# Express.js
-{: .no_toc }
-
-[Express.js](https://expressjs.com) is a Node.js framework for writing web applications. It is usually mentioned as a part of MEAN / MERN stack.
+[Express.js](https://expressjs.com) is a Node.js framework for writing web
+applications. It is usually mentioned as a part of MEAN / MERN stack.
 
 ## Installation
 
 ### nvm
 
-[nvm](https://github.com/nvm-sh/nvm) is a version manager for Node.js. Please follow [this instruction](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) to install it.
+[nvm](https://github.com/nvm-sh/nvm) is a version manager for Node.js. Please
+follow [this instruction](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
+to install it.
 
 ### Node.js
 
@@ -41,6 +41,7 @@ npm install -g yarn
 echo 'export PATH="$PATH:$(yarn global bin)"' >> .bashrc
 yarn global add express-generator
 ```
+
 ## Hello world
 
 After installing tools, we can test immediately by creating a new project:
@@ -49,9 +50,10 @@ After installing tools, we can test immediately by creating a new project:
 express hello-world && cd hello-world && yarn && yarn start
 ```
 
-It is time to open your browser and visit http://localhost:3000. A greeting will be displayed:
+It is time to open your browser and visit [http://localhost:3000]. A greeting
+will be displayed:
 
-```
+```text
 Express
 
 Welcome to Express

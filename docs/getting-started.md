@@ -4,14 +4,21 @@ layout: default
 nav_order: 2
 ---
 
-# Getting Started
+<details closed markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
 
-{: .no_toc}
+---
 
-From GitHub, you can easily find an Express.js boilerplate which provides basic items for setting up a new project. For
-example:
+From GitHub, you can easily find an Express.js boilerplate which provides basic
+items for setting up a new project. For example:
 
-```
+```text
 git@github.com:w3tecch/express-typescript-boilerplate.git
 ```
 
@@ -24,8 +31,11 @@ mkdir getting-started \
   && cd getting_started \
   && npm init -y \
   && npm install express typescript \
-  && npm install --save-dev typescript @types/node eslint prettier eslint-config-prettier eslint-plugin-prettier \
-  && npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser ts-node tsc-alias tsconfig-paths \
+  && npm install --save-dev typescript @types/node eslint prettier \
+  && npm install --save-dev eslint-config-prettier eslint-plugin-prettier \
+  && npm install --save-dev @typescript-eslint/eslint-plugin \
+  && npm install --save-dev @typescript-eslint/parser ts-node \
+  && npm install --save-dev tsc-alias tsconfig-paths \
   && npm install --save-dev rimraf nodemon
 ```
 
@@ -66,7 +76,8 @@ What did we install?
 * @types/node: Node component to support typescript
 * eslint: Syntax checker
 * prettier: Code formatter
-* eslint-config-prettier: Additional settings to avoid conflicts between eslint & prettier
+* eslint-config-prettier: Additional settings to avoid conflicts between eslint
+  & prettier
 * eslint-plugin-prettier: Add extra prettier rules to eslint
 * @typescript-eslint/eslint-plugin: Eslint plugin component
 * @typescript-eslint/parser: Eslint parser to work with typescript
@@ -242,7 +253,7 @@ Start server with command:
 npm run dev
 ```
 
-Then, visit http://localhost:3000, a greeting will be displayed:
+Then, visit [http://localhost:3000], a greeting will be displayed:
 
 ```text
 Hello world!
