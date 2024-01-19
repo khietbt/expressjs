@@ -1,13 +1,13 @@
+import 'reflect-metadata';
+
 import { configuration } from '@lib/miscellaneous';
-import express, { Express, Request, Response } from 'express';
+import { HelloWorldController } from '@src/controllers/HelloWorldController';
+import { createExpressServer } from 'routing-controllers';
 
-const app: Express = express();
-const port = configuration.application.port;
-
-app.get('/', (_req: Request, res: Response) => {
-  res.send('Hello world!');
+const app = createExpressServer({
+  controllers: [HelloWorldController]
 });
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+app.listen(configuration.application.port, () => {
+  console.log(`Running at the port ${configuration.application.port}`);
 });
