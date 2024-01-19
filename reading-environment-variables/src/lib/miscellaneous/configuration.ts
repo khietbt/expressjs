@@ -1,3 +1,4 @@
+import { EnvironmentConstants, EnvironmentVariableConstants } from '@lib/constants';
 import { EnvironmentUtils } from '@lib/utils';
 import * as _package from '@topdir/package.json';
 import dotenv from 'dotenv';
@@ -6,20 +7,24 @@ import path from 'path';
 const pkg: any = _package as any;
 
 dotenv.config({
-  path: path.join(process.cwd(), `.env.${EnvironmentUtils.getRunningEnvironment()}`)
+  path: path.join(process.cwd(), `.env.${getRunningEnvironment()}`)
 });
 
+function getRunningEnvironment() {
+  return EnvironmentUtils.getEnvironmentVariable(EnvironmentVariableConstants.NODE_ENV);
+}
+
 export const configuration = {
-  environment: EnvironmentUtils.getRunningEnvironment(),
-  isDevelopment: EnvironmentUtils.isDevelopment(),
-  isLocal: EnvironmentUtils.isLocal(),
-  isProduction: EnvironmentUtils.isProduction(),
-  isTest: EnvironmentUtils.isTest(),
+  environment: getRunningEnvironment(),
+  isDevelopment: getRunningEnvironment() === EnvironmentConstants.DEVELOPMENT,
+  isLocal: getRunningEnvironment() === EnvironmentConstants.LOCAL,
+  isProduction: getRunningEnvironment() === EnvironmentConstants.PRODUCTION,
+  isTest: getRunningEnvironment() === EnvironmentConstants.TEST,
 
   application: {
     name: pkg.name,
     version: pkg.version,
     description: pkg.description,
-    port: EnvironmentUtils.getApplicationPort()
+    port: EnvironmentUtils.getEnvironmentVariable(EnvironmentVariableConstants.APPLICATION_PORT)
   }
 };

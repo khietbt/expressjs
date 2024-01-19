@@ -1,53 +1,27 @@
-import { EnvironmentConstants, EnvironmentVariableConstants } from '../constants';
+import * as process from 'process';
+
 import { ObjectUtils } from './ObjectUtils';
 
-const getApplicationPort = (): number => {
-  const s = getEnvironmentVariable(EnvironmentVariableConstants.APPLICATION_PORT);
-  const applicationPort = parseInt(s);
+const getEnvironmentVariable = (k: string): string => {
+  const v: string | undefined = getOptionalEnvironmentVariable(k);
 
-  if (isNaN(applicationPort) || applicationPort <= 0) {
-    throw new Error(`The environment variable APPLICATION_PORT '${s}' is invalid`);
+  if (ObjectUtils.isUndefined(v)) {
+    throw new Error(`Could not find the environment variable '${k}'`);
   }
 
-  return applicationPort;
+  return v as string;
 };
 
-const getEnvironmentVariable = (key: string): string => {
-  const value = process.env[key];
+const getOptionalEnvironmentVariable = (k: string): string | undefined => process.env[k];
 
-  if (ObjectUtils.isUndefined(value)) {
-    throw new Error(`Could not find the environment variable '${key}'`);
-  }
+const getEnvironmentVariableAsArray = (k: string, d: string): string[] => {
+  const v: string | undefined = getOptionalEnvironmentVariable(k);
 
-  return value as string;
+  return (v && v.split(d)) || [];
 };
-
-const getEnvironmentVariableAsArray = (key: string, delimiter = ',') => {
-  const value = getOptionalEnvironmentVariable(key);
-
-  return (value && value.split(delimiter)) || [];
-};
-
-const getOptionalEnvironmentVariable = (key: string): string | undefined => process.env[key];
-
-const getRunningEnvironment = (): string => getEnvironmentVariable(EnvironmentVariableConstants.NODE_ENV);
-
-const isDevelopment = (): boolean => getRunningEnvironment() === EnvironmentConstants.LOCAL;
-
-const isLocal = (): boolean => getRunningEnvironment() === EnvironmentConstants.LOCAL;
-
-const isProduction = (): boolean => getRunningEnvironment() === EnvironmentConstants.PRODUCTION;
-
-const isTest = (): boolean => getRunningEnvironment() === EnvironmentConstants.TEST;
 
 export const EnvironmentUtils = {
-  getApplicationPort,
   getEnvironmentVariable,
   getEnvironmentVariableAsArray,
-  getOptionalEnvironmentVariable,
-  getRunningEnvironment,
-  isDevelopment,
-  isLocal,
-  isProduction,
-  isTest
+  getOptionalEnvironmentVariable
 };
