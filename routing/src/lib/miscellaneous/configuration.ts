@@ -52,9 +52,7 @@ function getRunningEnvironment(): string {
 }
 
 function getPath(p: string): string {
-  return isProduction()
-    ? path.join(process.cwd(), p.replace('src/', 'dist/').slice(0, -3) + '.js')
-    : path.join(process.cwd(), p);
+  return path.join(process.cwd(), p);
 }
 
 function getPaths(paths: string[]): string[] {
