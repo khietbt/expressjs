@@ -3,6 +3,7 @@ import { ConversionUtils, EnvironmentUtils } from '@lib/utils';
 import * as _package from '@topdir/package.json';
 import dotenv from 'dotenv';
 import path from 'path';
+import * as process from 'process';
 
 const pkg: any = _package as any;
 
@@ -26,6 +27,36 @@ function getApplicationPort(): number {
   return p;
 }
 
+function getOsPath(k: string): string {
+  return getPath(EnvironmentUtils.getEnvironmentVariable(k));
+}
+
+function getOsPaths(k: string): string[] {
+  return getPaths(EnvironmentUtils.getEnvironmentVariableAsArray(k));
+}
+
+function isProduction() {
+  return getRunningEnvironment() === EnvironmentConstants.PRODUCTION;
+}
+
+function getPath(p: string): string {
+  return isProduction()
+    ? path.join(process.cwd(), p.replace('src/', 'dist/').slice(0, -3) + '.js')
+    : path.join(process.cwd(), p);
+}
+
+function getPaths(paths: string[]): string[] {
+  return paths.map((p: string) => getPath(p));
+}
+
+function getApplicationControllers(): string[] {
+  return getOsPaths(EnvironmentVariableConstants.APPLICATION_CONTROLLERS);
+}
+
+function getApplicationRoutePrefix(): string {
+  return EnvironmentUtils.getOptionalEnvironmentVariable(EnvironmentVariableConstants.APPLICATION_ROUTE_PREFIX) || '/';
+}
+
 export const configuration = {
   environment: getRunningEnvironment(),
   isDevelopment: getRunningEnvironment() === EnvironmentConstants.DEVELOPMENT,
@@ -37,6 +68,8 @@ export const configuration = {
     name: pkg.name,
     version: pkg.version,
     description: pkg.description,
-    port: getApplicationPort()
+    port: getApplicationPort(),
+    controllers: getApplicationControllers(),
+    routePrefix: getApplicationRoutePrefix()
   }
 };

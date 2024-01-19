@@ -1,11 +1,11 @@
 import 'reflect-metadata';
 
 import { configuration } from '@lib/miscellaneous';
-import { HelloWorldController } from '@src/controllers/HelloWorldController';
 import { createExpressServer } from 'routing-controllers';
 
 const app = createExpressServer({
-  controllers: [HelloWorldController]
+  controllers: configuration.application.controllers,
+  routePrefix: configuration.application.routePrefix
 });
 
 app.listen(configuration.application.port, () => {

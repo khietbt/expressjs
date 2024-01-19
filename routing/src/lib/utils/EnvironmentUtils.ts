@@ -14,7 +14,7 @@ const getEnvironmentVariable = (k: string): string => {
 
 const getOptionalEnvironmentVariable = (k: string): string | undefined => process.env[k];
 
-const getEnvironmentVariableAsArray = (k: string, d: string): string[] => {
+const getEnvironmentVariableAsArray = (k: string, d: string = ','): string[] => {
   const v: string | undefined = getOptionalEnvironmentVariable(k);
 
   return (v && v.split(d)) || [];
