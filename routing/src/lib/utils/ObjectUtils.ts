@@ -1,10 +1,16 @@
 import { ObjectConstants } from '../constants';
 
-const isNull = (o: any): boolean => o === ObjectConstants.NULL;
+function isNull(o: any) {
+  return o === ObjectConstants.NULL;
+}
 
-const isNullOrUndefined = (o: any): boolean => !!o;
+function isNullOrUndefined(o: any) {
+  return !o;
+}
 
-const isUndefined = (o: any): boolean => o === ObjectConstants.UNDEFINED;
+function isUndefined(o: any) {
+  return o === ObjectConstants.UNDEFINED;
+}
 
 export const ObjectUtils = {
   isNull,

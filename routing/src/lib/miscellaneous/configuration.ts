@@ -11,20 +11,32 @@ dotenv.config({
   path: path.join(process.cwd(), `.env.${getRunningEnvironment()}`)
 });
 
-function getRunningEnvironment(): string {
-  return EnvironmentUtils.getEnvironmentVariable(EnvironmentVariableConstants.NODE_ENV);
-}
-
 function getApplicationPort(): number {
   const s: string = EnvironmentUtils.getEnvironmentVariable(EnvironmentVariableConstants.APPLICATION_PORT);
 
   const p: number = ConversionUtils.toNumber(s);
 
   if (p <= 0) {
-    throw new Error(`Application port must be an integer`);
+    throw new Error(`Application port must be a positive integer`);
   }
 
   return p;
+}
+
+function isDevelopment() {
+  return getRunningEnvironment() === EnvironmentConstants.DEVELOPMENT;
+}
+
+function isLocal() {
+  return getRunningEnvironment() === EnvironmentConstants.LOCAL;
+}
+
+function isProduction() {
+  return getRunningEnvironment() === EnvironmentConstants.PRODUCTION;
+}
+
+function isTest() {
+  return getRunningEnvironment() === EnvironmentConstants.TEST;
 }
 
 function getOsPath(k: string): string {
@@ -35,8 +47,8 @@ function getOsPaths(k: string): string[] {
   return getPaths(EnvironmentUtils.getEnvironmentVariableAsArray(k));
 }
 
-function isProduction() {
-  return getRunningEnvironment() === EnvironmentConstants.PRODUCTION;
+function getRunningEnvironment(): string {
+  return EnvironmentUtils.getEnvironmentVariable(EnvironmentVariableConstants.NODE_ENV);
 }
 
 function getPath(p: string): string {
@@ -58,18 +70,18 @@ function getApplicationRoutePrefix(): string {
 }
 
 export const configuration = {
-  environment: getRunningEnvironment(),
-  isDevelopment: getRunningEnvironment() === EnvironmentConstants.DEVELOPMENT,
-  isLocal: getRunningEnvironment() === EnvironmentConstants.LOCAL,
-  isProduction: getRunningEnvironment() === EnvironmentConstants.PRODUCTION,
-  isTest: getRunningEnvironment() === EnvironmentConstants.TEST,
-
   application: {
-    name: pkg.name,
-    version: pkg.version,
-    description: pkg.description,
-    port: getApplicationPort(),
     controllers: getApplicationControllers(),
-    routePrefix: getApplicationRoutePrefix()
-  }
+    description: pkg.description,
+    name: pkg.name,
+    port: getApplicationPort(),
+    routePrefix: getApplicationRoutePrefix(),
+    version: pkg.version
+  },
+
+  environment: getRunningEnvironment(),
+  isDevelopment: isDevelopment(),
+  isLocal: isLocal(),
+  isProduction: isProduction(),
+  isTest: isTest()
 };
