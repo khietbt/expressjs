@@ -4,6 +4,7 @@ layout: default
 nav_order: 1
 ---
 
+<!-- markdownlint-disable MD033 -->
 <details closed markdown="block">
   <summary>
     Table of contents
@@ -15,20 +16,20 @@ nav_order: 1
 
 ---
 
-[Express.js](https://expressjs.com) is a Node.js framework for writing web
+[Express.js](https://expressjs.com) is a `Node.js` framework for writing web
 applications. It is usually mentioned as a part of MEAN / MERN stack.
 
 ## Installation
 
 ### nvm
 
-[nvm](https://github.com/nvm-sh/nvm) is a version manager for Node.js. Please
+[nvm](https://github.com/nvm-sh/nvm) is a version manager for `Node.js`. Please
 follow [this instruction](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
 to install it.
 
 ### Node.js
 
-Please install the latest lts version of Node.js using nvm:
+Please install the latest lts version of `Node.js` using `nvm`:
 
 ```shell
 nvm install --lts

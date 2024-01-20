@@ -4,6 +4,7 @@ layout: default
 nav_order: 2
 ---
 
+<!-- markdownlint-disable MD033 -->
 <details closed markdown="block">
   <summary>
     Table of contents
@@ -66,26 +67,25 @@ The `package.json` should be like:
     "tsconfig-paths": "^4.2.0"
   }
 }
-
 ```
 
 What did we install?
 
-* express: Express.js component
-* typescript: Typescript component
-* @types/node: Node component to support typescript
-* eslint: Syntax checker
-* prettier: Code formatter
-* eslint-config-prettier: Additional settings to avoid conflicts between eslint
+- express: Express.js component
+- typescript: Typescript component
+- @types/node: Node component to support typescript
+- eslint: Syntax checker
+- prettier: Code formatter
+- eslint-config-prettier: Additional settings to avoid conflicts between eslint
   & prettier
-* eslint-plugin-prettier: Add extra prettier rules to eslint
-* @typescript-eslint/eslint-plugin: Eslint plugin component
-* @typescript-eslint/parser: Eslint parser to work with typescript
-* ts-node: Typescript interpreter
-* tsc-alias: Typescript's alias processor
-* tsconfig-paths: Short path
-* rimraf: Tool to clean output dir before compiling
-* nodemon: Tool to watch file changes to build while coding
+- eslint-plugin-prettier: Add extra prettier rules to eslint
+- @typescript-eslint/eslint-plugin: Eslint plugin component
+- @typescript-eslint/parser: Eslint parser to work with typescript
+- ts-node: Typescript interpreter
+- tsc-alias: Typescript's alias processor
+- tsconfig-paths: Short path
+- rimraf: Tool to clean output dir before compiling
+- nodemon: Tool to watch file changes to build while coding
 
 ## Add configurations
 
@@ -95,10 +95,7 @@ What did we install?
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "prettier"
-  ],
+  "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -168,9 +165,7 @@ indent_style=space
 
 ```json
 {
-  "watch": [
-    "src"
-  ],
+  "watch": ["src"],
   "ext": ".ts,.js",
   "ignore": [],
   "exec": "npx ts-node ./src/index.ts"
@@ -230,16 +225,16 @@ PORT=3000
 Create a file `src/index.ts` with content:
 
 ```typescript
-import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
+import express, { Express, Request, Response } from "express";
+import dotenv from "dotenv";
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello world!');
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello world!");
 });
 
 app.listen(port, () => {

@@ -4,6 +4,7 @@ layout: default
 nav_order: 3
 ---
 
+<!-- markdownlint-disable MD033 -->
 <details closed markdown="block">
   <summary>
     Table of contents
@@ -25,11 +26,12 @@ cd reading-environment-variables
 npm install cross-env
 ```
 
-Here, cross-env is a cross-platform tool to set environment variables.
+Here, `cross-env` is a cross-platform tool to set environment variables.
 
 ## Prepare an environment file
 
-Node.js uses `dotenv` to read the environment file in the root of the project. For example:
+Node.js uses `dotenv` to read the environment file in the root of the project.
+For example:
 
 ```properties
 # .env.local
@@ -38,7 +40,8 @@ APPLICATION_PORT=8000
 
 ## Reading values from file
 
-The above file is dedicated for running the application at the local computer (NODE_ENV).
+The above file is dedicated for running the application at the local computer
+`NODE_ENV`.
 
 ### Setting the local environment
 
@@ -54,16 +57,16 @@ In the `package.json`, a new script entry is necessary:
 
 ### Using environment values
 
-* Loading values from file:
+- Loading values from file:
 
 ```typescript
 dotenv.config({
-  file: path.join(process.cwd(), `.env.${process.env.NODE_ENV}`)
-})
+  file: path.join(process.cwd(), `.env.${process.env.NODE_ENV}`),
+});
 ```
 
-* Using values:
+- Using values:
 
 ```typescript
-const applicationPort = process.env.APPLICATION_PORT
+const applicationPort = process.env.APPLICATION_PORT;
 ```
