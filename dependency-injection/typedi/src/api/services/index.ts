@@ -1,0 +1,1 @@
+export { SuperHeroService } from './SuperHeroService';
