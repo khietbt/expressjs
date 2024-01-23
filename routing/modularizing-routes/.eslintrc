@@ -9,6 +9,14 @@
     "simple-import-sort/exports": "error",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": "off",
+    "no-multi-spaces": [
+      1,
+      {
+        "exceptions": {
+          "VariableDeclarator": true
+        }
+      }
+    ],
     "prettier/prettier": [
       "warn",
       {

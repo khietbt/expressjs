@@ -4,7 +4,7 @@
 echo "Linting before commiting"
 echo
 
-for FILE in $(find ${PWD} -type f -name package.json | grep -v node_modules); do
+for FILE in $(find ${PWD} -type f -name package.json | grep -v node_modules | grep -v dist); do
 	DIRNAME=$(dirname ${FILE})
 	echo "Started linting changes in ${DIRNAME}"
 	cd ${DIRNAME} && npx lint-staged
