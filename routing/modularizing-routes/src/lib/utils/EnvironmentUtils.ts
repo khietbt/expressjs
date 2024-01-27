@@ -5,7 +5,7 @@ import * as process from 'process';
 import { ObjectUtils } from './ObjectUtils';
 
 export class EnvironmentUtils {
-  public static getEnvironmentVariable(k: string): string {
+  public static getEnvironmentVariable = (k: string): string => {
     const v = this.getOptionalEnvironmentVariable(k);
 
     if (ObjectUtils.isUndefined(v)) {
@@ -13,15 +13,13 @@ export class EnvironmentUtils {
     }
 
     return v as string;
-  }
+  };
 
-  public static getOptionalEnvironmentVariable(k: string): string | undefined {
-    return process.env[k];
-  }
+  public static getOptionalEnvironmentVariable = (k: string): string | undefined => process.env[k];
 
-  public static getEnvironmentVariableAsArray(k: string, separator: string = StringConstants.COMMA): string[] {
+  public static getEnvironmentVariableAsArray = (k: string, separator: string = StringConstants.COMMA): string[] => {
     const v = this.getOptionalEnvironmentVariable(k);
 
     return (v && v.split(separator)) || [];
-  }
+  };
 }
