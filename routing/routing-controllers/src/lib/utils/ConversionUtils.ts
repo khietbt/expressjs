@@ -1,13 +1,11 @@
-function toNumber(s: string) {
-  const v = parseInt(s);
+export class ConversionUtils {
+  public static toNumber = (s: string): number => {
+    const v = parseInt(s);
 
-  if (isNaN(v)) {
-    throw new Error(`'${s}' is not a valid number`);
-  }
+    if (isNaN(v)) {
+      throw new Error(`'${s}' is not a valid number`);
+    }
 
-  return v;
+    return v;
+  };
 }
-
-export const ConversionUtils = {
-  toNumber
-};

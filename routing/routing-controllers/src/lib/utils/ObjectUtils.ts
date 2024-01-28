@@ -1,19 +1,11 @@
-import { ObjectConstants } from '../constants';
+import { ObjectConstants, StringConstants } from '../constants';
 
-function isNull(o: any) {
-  return o === ObjectConstants.NULL;
+export class ObjectUtils {
+  public static isFunction = (o: any): boolean => typeof o === StringConstants.FUNCTION;
+
+  public static isNull = (o: any): boolean => o === ObjectConstants.NULL;
+
+  public static isNullOrUndefined = (o: any): boolean => !o;
+
+  public static isUndefined = (o: any): boolean => o === ObjectConstants.UNDEFINED;
 }
-
-function isNullOrUndefined(o: any) {
-  return !o;
-}
-
-function isUndefined(o: any) {
-  return o === ObjectConstants.UNDEFINED;
-}
-
-export const ObjectUtils = {
-  isNull,
-  isNullOrUndefined,
-  isUndefined
-};

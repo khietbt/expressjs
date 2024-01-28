@@ -3,8 +3,6 @@ import { superHeroRouter } from '@src/api/routers/superHeroRouter';
 import bodyParser from 'body-parser';
 import express, { Express, Request, Response } from 'express';
 
-const func = (a: number): number => a + 2;
-
 const app: Express = express();
 const port: string = configuration.application.port;
 
