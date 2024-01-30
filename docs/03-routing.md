@@ -1,7 +1,8 @@
 ---
 title: Routing
 layout: default
-nav_order: 4
+nav_order: 3
+has_children: true
 ---
 
 <!-- markdownlint-disable MD033 -->
@@ -16,7 +17,8 @@ nav_order: 4
 
 ---
 
-Express.js is a minimal framework with a primitive way of routing:
+Routing is the heart of Express.js. For example: In order to return
+'Hello world' to client:
 
 ```typescript
 const app: Express = express();
@@ -26,15 +28,19 @@ app.get("/", (_req: Request, res: Response) => {
 });
 ```
 
-It is quite flexible and efficient. However, it will need a lot of this kind of
-of boilerplate codes if the project becomes larger. It is time for
-`routing-controllers` to route with annotations.
+It looks simple but efficient & flexible. However, it will need a lot of this
+kind of boilerplate codes if the project becomes larger. In this case, there
+are 2 choices:
 
-## Prepare a project
+- Modularizing routes
+- Using routes via annotations
+
+## Modularizing routes
 
 Please start with source code of `reading-environment-variables`:
 
 ```shell
+mkdir routing
 cp -R reading-environment-variables routing
 ```
 
@@ -48,7 +54,7 @@ npm install reflect-meta routing-controllers lru-cache
 ```
 
 Note: An up-to-date version of `lru-cache` is necessary because to override the
-wrong version linked by `routing-controllers`. Some features in tsconfig.json
+wrong version linked by `routing-controllers`. Some features in `tsconfig.json`
 must be enabled:
 
 ```json

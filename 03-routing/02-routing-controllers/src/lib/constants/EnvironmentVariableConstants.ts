@@ -4,3 +4,4 @@ export const EnvironmentVariableConstants = {
   APPLICATION_ROUTE_PREFIX: 'APPLICATION_ROUTE_PREFIX',
   NODE_ENV: 'NODE_ENV'
 };
+8;

@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 layout: default
-nav_order: 2
+nav_order: 01
 ---
 
 <!-- markdownlint-disable MD033 -->
@@ -28,7 +28,7 @@ Does it look complex? If yes, then let us build an Express.js for ourselves.
 ## Initialize a new project
 
 ```shell
-mkdir getting-started \
+mkdir 01-getting-started \
   && cd getting_started \
   && npm init -y \
   && npm install express typescript \
@@ -44,7 +44,7 @@ The `package.json` should be like:
 
 ```json
 {
-  "name": "getting-started",
+  "name": "01-getting-started",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

@@ -1,7 +1,7 @@
 ---
 title: Reading Environment Variables
 layout: default
-nav_order: 3
+nav_order: 2
 ---
 
 <!-- markdownlint-disable MD033 -->
@@ -21,8 +21,8 @@ Using environment variables is a simple way to make the application configurable
 ## Prepare a project
 
 ```shell
-cp -R getting-started reading-environment-variables
-cd reading-environment-variables
+cp -R 01-getting-started 02-reading-environment-variables
+cd 02-reading-environment-variables
 npm install cross-env
 ```
 

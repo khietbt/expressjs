@@ -7,6 +7,9 @@ import * as process from 'process';
 
 const pkg: any = _package as any;
 
+const getRunningEnvironment = (): string =>
+  EnvironmentUtils.getEnvironmentVariable(EnvironmentVariableConstants.NODE_ENV);
+
 dotenv.config({
   path: path.join(process.cwd(), `.env.${getRunningEnvironment()}`)
 });
@@ -45,10 +48,6 @@ function getOsPath(k: string): string {
 
 function getOsPaths(k: string): string[] {
   return getPaths(EnvironmentUtils.getEnvironmentVariableAsArray(k));
-}
-
-function getRunningEnvironment(): string {
-  return EnvironmentUtils.getEnvironmentVariable(EnvironmentVariableConstants.NODE_ENV);
 }
 
 function getPath(p: string): string {
