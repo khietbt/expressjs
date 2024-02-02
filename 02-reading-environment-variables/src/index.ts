@@ -2,7 +2,7 @@ import { configuration } from '@lib/miscellaneous';
 import express, { Express, Request, Response } from 'express';
 
 const app: Express = express();
-const port = configuration.application.port;
+const { port } = configuration.application;
 
 app.get('/', (_req: Request, res: Response) => {
   res.send('Hello world!');

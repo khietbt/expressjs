@@ -7,7 +7,7 @@
     "local": "cross-env NODE_ENV=local npx nodemon",
     "development": "cross-env NODE_ENV=development npx nodemon",
     "build": "rimraf ./dist && tsc && tsc-alias",
-    "start": "node dist/index.js",
+    "start": "node dist/src/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
