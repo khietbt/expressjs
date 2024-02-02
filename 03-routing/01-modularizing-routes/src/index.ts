@@ -1,10 +1,11 @@
-import { configuration } from '@lib/miscellaneous';
-import { superHeroRouter } from '@src/api/routers/superHeroRouter';
 import bodyParser from 'body-parser';
 import express, { Express, Request, Response } from 'express';
 
+import { configuration } from './miscellaneous';
+import { superHeroRouter } from './routers';
+
 const app: Express = express();
-const port: string = configuration.application.port;
+const { port } = configuration.application;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

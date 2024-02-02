@@ -1,4 +1,4 @@
-import { superHeroController } from '@controllers/superHeroController';
+import { superHeroController } from '@src/controllers';
 import { Router } from 'express';
 
 const superHeroRouter: Router = Router();

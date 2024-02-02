@@ -1,5 +1,5 @@
-import { StringConstants } from '@lib/constants';
-import { EnvironmentVariableNotFoundException } from '@lib/exceptions';
+import { StringConstants } from '@src/constants';
+import { EnvironmentVariableNotFoundException } from '@src/exceptions';
 import * as process from 'process';
 
 import { ObjectUtils } from './ObjectUtils';

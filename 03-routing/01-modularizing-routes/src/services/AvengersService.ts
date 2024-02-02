@@ -1,4 +1,4 @@
-import { SuperHeroService } from '@src/api/services/interfaces';
+import { SuperHeroService } from './interfaces';
 
 export class AvengersService implements SuperHeroService {
   avengers: any[] = [
