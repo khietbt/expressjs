@@ -1,4 +1,4 @@
-import { SuperHeroService } from './interfaces';
+import { SuperHeroService } from './SuperHeroService';
 
 export class AvengersService implements SuperHeroService {
   avengers: any[] = [
@@ -16,7 +16,7 @@ export class AvengersService implements SuperHeroService {
     const member = this.avengers.find((h) => h.id === id);
 
     if (!member) {
-      throw new Error('Not found');
+      throw new Error(`Superhero (id=${id}) not found`);
     }
 
     return member;

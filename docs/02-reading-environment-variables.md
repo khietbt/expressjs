@@ -70,3 +70,36 @@ dotenv.config({
 ```typescript
 const applicationPort = process.env.APPLICATION_PORT;
 ```
+
+### Directory structure
+
+Now we hare a project which looks like this:
+
+```text
+02-reading-environment-variables
+├── nodemon.json
+├── package.json
+├── package-lock.json
+├── reading-environment-variables.iml
+├── src
+│   ├── constants
+│   │   ├── EnvironmentConstants.ts
+│   │   ├── EnvironmentVariableConstants.ts
+│   │   ├── index.ts
+│   │   ├── ObjectConstants.ts
+│   │   └── StringConstants.ts
+│   ├── exceptions
+│   │   ├── EnvironmentVariableNotFoundException.ts
+│   │   ├── index.ts
+│   │   └── NotFoundException.ts
+│   ├── index.ts
+│   ├── miscellaneous
+│   │   ├── configuration.ts
+│   │   └── index.ts
+│   └── utils
+│       ├── ConversionUtils.ts
+│       ├── EnvironmentUtils.ts
+│       ├── index.ts
+│       └── ObjectUtils.ts
+└── tsconfig.json
+```

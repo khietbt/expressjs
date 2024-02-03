@@ -1,1 +1,0 @@
-export { SuperHeroService } from './SuperHeroService';
