@@ -1,5 +1,5 @@
-import { EnvironmentVariableNotFoundException } from '@lib/exceptions';
-import { ObjectUtils } from '@lib/utils';
+import { EnvironmentVariableNotFoundException } from '@src/exceptions';
+import { ObjectUtils } from '@src/utils/index';
 import * as process from 'process';
 
 export class EnvironmentUtils {

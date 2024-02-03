@@ -1,9 +1,8 @@
-import { EnvironmentUtils } from '@lib/utils';
+import { EnvironmentConstants, EnvironmentVariableConstants } from '@src/constants';
+import { EnvironmentUtils } from '@src/utils';
 import * as _package from '@topdir/package.json';
 import dotenv from 'dotenv';
 import path from 'path';
-
-import { EnvironmentConstants, EnvironmentVariableConstants } from '../constants';
 
 const pkg: any = _package as any;
 

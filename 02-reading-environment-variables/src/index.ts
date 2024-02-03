@@ -1,5 +1,6 @@
-import { configuration } from '@lib/miscellaneous';
 import express, { Express, Request, Response } from 'express';
+
+import { configuration } from './miscellaneous';
 
 const app: Express = express();
 const { port } = configuration.application;
