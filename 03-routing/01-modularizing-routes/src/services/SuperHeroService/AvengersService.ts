@@ -16,7 +16,7 @@ export class AvengersService implements SuperHeroService {
     const member = this.avengers.find((h) => h.id === id);
 
     if (!member) {
-      throw new Error(`Superhero (id=${id}) not found`);
+      throw new Error(`Avenger (id=${id}) not found`);
     }
 
     return member;

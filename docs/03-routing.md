@@ -5,18 +5,6 @@ nav_order: 3
 has_children: true
 ---
 
-<!-- markdownlint-disable MD033 -->
-<details closed markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
-
----
-
 Routing is the heart of Express.js. For example: In order to return
 'Hello world' to client:
 
