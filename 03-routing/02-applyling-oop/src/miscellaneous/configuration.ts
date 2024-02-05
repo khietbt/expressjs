@@ -1,5 +1,6 @@
 import { EnvironmentConstants, EnvironmentVariableConstants } from '@src/constants';
-import { EnvironmentUtils } from '@src/utils';
+import { InvalidApplicationPortException } from '@src/exceptions';
+import { ConversionUtils, EnvironmentUtils } from '@src/utils';
 import * as _package from '@topdir/package.json';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -15,7 +16,17 @@ dotenv.config({
 });
 
 // Gets the application port.
-const getApplicationPort = () => EnvironmentUtils.getEnvironmentVariable(EnvironmentVariableConstants.APPLICATION_PORT);
+const getApplicationPort = () => {
+  const s = EnvironmentUtils.getEnvironmentVariable(EnvironmentVariableConstants.APPLICATION_PORT);
+
+  const p = ConversionUtils.toInteger(s);
+
+  if (p < 1 || p > 65535) {
+    throw new InvalidApplicationPortException(p);
+  }
+
+  return p;
+};
 
 export const configuration = {
   environment: getRunningEnvironment(),

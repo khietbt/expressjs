@@ -1,11 +1,11 @@
-import { AvengersService, SuperHeroService } from '@src/services';
+import { AvengerService, SuperHeroService } from '@src/services';
 import { ConversionUtils } from '@src/utils';
 import { Request, Response, Router } from 'express';
 
 import { ApiController } from './ApiController';
 
 export class SuperHeroController implements ApiController {
-  private superHeroService: SuperHeroService = new AvengersService();
+  private superHeroService: SuperHeroService = new AvengerService();
 
   public get path(): string {
     return '/api/super-heroes';
@@ -25,6 +25,8 @@ export class SuperHeroController implements ApiController {
   };
 
   public getById = async (request: Request, response: Response): Promise<any> => {
-    response.json(await this.superHeroService.getById(ConversionUtils.toInteger(request.params.id)));
+    const id = request.params.id;
+    const convertedId = ConversionUtils.toInteger(id);
+    response.json(await this.superHeroService.getById(convertedId));
   };
 }

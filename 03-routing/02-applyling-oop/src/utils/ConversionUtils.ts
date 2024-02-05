@@ -2,12 +2,10 @@ import { InvalidNumberConversionException } from '@src/exceptions/InvalidNumberC
 
 export class ConversionUtils {
   public static toInteger = (s: string) => {
-    const v = parseInt(s);
-
-    if (isNaN(v)) {
+    if (!/^\d+$/.test(s)) {
       throw new InvalidNumberConversionException(s);
     }
 
-    return v;
+    return parseInt(s);
   };
 }

@@ -1,2 +1,2 @@
-export * from './AvengersService';
+export * from './AvengerService';
 export * from './SuperHeroService';
