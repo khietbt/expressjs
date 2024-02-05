@@ -1,10 +1,8 @@
 import { AvengerService, SuperHeroService } from '@src/services';
 import { Get, JsonController, Param } from 'routing-controllers';
 
-import { ApiController } from './ApiController';
-
 @JsonController('/super-heroes')
-export class SuperHeroController implements ApiController {
+export class SuperHeroController {
   private superHeroService: SuperHeroService = new AvengerService();
 
   @Get('/')

@@ -1,6 +1,6 @@
 import { EnvironmentConstants, EnvironmentVariableConstants } from '@src/constants';
 import { InvalidApplicationPortException } from '@src/exceptions';
-import { ConversionUtils, EnvironmentUtils } from '@src/utils';
+import { ConversionUtils, EnvironmentUtils, PathUtils } from '@src/utils';
 import * as _package from '@topdir/package.json';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -28,6 +28,14 @@ const getApplicationPort = () => {
   return p;
 };
 
+const getApplicationControllers = () => {
+  const controllers = EnvironmentUtils.getEnvironmentVariableAsArray(
+    EnvironmentVariableConstants.APPLICATION_CONTROLLERS
+  );
+
+  return PathUtils.getAbsolutePaths(controllers);
+};
+
 const getApplicationRoutePrefix = () => {
   return EnvironmentUtils.getOptionalEnvironmentVariable(EnvironmentVariableConstants.APPLICATION_ROUTE_PREFIX) || '';
 };
@@ -44,6 +52,7 @@ export const configuration = {
     version: pkg.version,
     description: pkg.description,
     port: getApplicationPort(),
-    routePrefix: getApplicationRoutePrefix()
+    routePrefix: getApplicationRoutePrefix(),
+    controllers: getApplicationControllers()
   }
 };
