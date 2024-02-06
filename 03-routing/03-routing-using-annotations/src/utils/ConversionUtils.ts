@@ -1,4 +1,4 @@
-import { InvalidNumberConversionException } from '@src/exceptions/InvalidNumberConversionException';
+import { InvalidNumberConversionException } from '../exceptions';
 
 export class ConversionUtils {
   public static toInteger = (s: string) => {

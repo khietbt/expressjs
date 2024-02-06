@@ -1,4 +1,4 @@
 export * from './ConversionUtils';
-export * from './EnvironmentUtils';
+export * from './EnvironmentVariableUtils';
 export * from './ObjectUtils';
 export * from './PathUtils';
