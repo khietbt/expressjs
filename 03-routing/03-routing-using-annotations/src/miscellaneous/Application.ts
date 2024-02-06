@@ -1,26 +1,21 @@
-// import { ApiController } from '@src/controllers';
-// import express from 'express';
-// import { createExpressServer } from 'routing-controllers';
+import { createExpressServer } from 'routing-controllers';
 
-// export class Application {
-//   private readonly controllers: ApiController[];
-//   private readonly port: number;
-//   private application: express.Application;
+import { configuration } from './configuration';
+import { Logger } from './Logger';
 
-//   public constructor(controllers: ApiController[], port: number) {
-//     this.controllers = controllers;
-//     this.port = port;
-//     this.application = createExpressServer({
-//       controllers: controllers
-//     });
-//   }
+const log = new Logger();
 
-//   public run() {
-//     this.initializeRoutes();
+export class Application {
+  public static run() {
+    const { controllers, routePrefix, port } = configuration.application;
 
-//     this.application.listen(this.port, () => {
-//       console.log(`"Listening on the port ${this.port}"`);
-//     });
-//   }
-// }
-export {};
+    const server = createExpressServer({ controllers, routePrefix });
+
+    if (!configuration.isTest) {
+      server.listen(port, () => {
+        // console.log(`Started listening on port '${port}'`);
+        log.info(`Started listening on port '{}'`, port);
+      });
+    }
+  }
+}
