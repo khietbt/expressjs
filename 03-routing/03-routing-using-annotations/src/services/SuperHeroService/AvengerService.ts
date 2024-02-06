@@ -1,7 +1,7 @@
-import { SuperHeroModel } from '@src/models';
-import { AvengerRepository } from '@src/repositories';
-import { SuperHeroService } from '@src/services';
-import { ObjectUtils } from '@src/utils';
+import { SuperHeroModel } from '../../models';
+import { AvengerRepository } from '../../repositories';
+import { SuperHeroService } from '../../services';
+import { ObjectUtils } from '../../utils';
 
 export class AvengerService implements SuperHeroService {
   private readonly avengerRepository: AvengerRepository;

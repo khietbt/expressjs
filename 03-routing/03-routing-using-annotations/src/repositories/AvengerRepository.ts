@@ -1,4 +1,4 @@
-import { SuperHeroModel } from '@src/models/SuperHeroModel';
+import { SuperHeroModel } from '../models';
 
 export class AvengerRepository {
   private readonly avengers: Record<number, SuperHeroModel>;

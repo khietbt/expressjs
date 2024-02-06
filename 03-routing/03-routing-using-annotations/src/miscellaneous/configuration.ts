@@ -1,9 +1,10 @@
-import { EnvironmentConstants, EnvironmentVariableConstants } from '@src/constants';
-import { InvalidApplicationPortException } from '@src/exceptions';
-import { ConversionUtils, EnvironmentVariableUtils, PathUtils } from '@src/utils';
-import * as _package from '@topdir/package.json';
 import dotenv from 'dotenv';
 import path from 'path';
+
+import * as _package from '../../package.json';
+import { EnvironmentConstants, EnvironmentVariableConstants } from '../constants';
+import { InvalidApplicationPortException } from '../exceptions';
+import { ConversionUtils, EnvironmentVariableUtils, PathUtils } from '../utils';
 
 const pkg: any = _package as any;
 

@@ -1,5 +1,4 @@
-import { EnvironmentVariableConstants } from '@src/constants';
-
+import { EnvironmentVariableConstants } from '../constants';
 import { NotFoundException } from './NotFoundException';
 
 export class EnvironmentVariableNotFoundException extends NotFoundException {
