@@ -1,4 +1,4 @@
-import { ObjectConstants, StringConstants } from '../constants';
+import { ObjectConstants, StringConstants } from '@src/constants';
 
 export class ObjectUtils {
   public static isFunction = (o: any): boolean => typeof o === StringConstants.FUNCTION;

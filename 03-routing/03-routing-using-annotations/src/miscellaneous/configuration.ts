@@ -38,6 +38,10 @@ const getApplicationControllers = () => {
   return PathUtils.getAbsolutePaths(controllers);
 };
 
+const getApplicationLogLevel = () => {
+  return EnvironmentVariableUtils.getEnvironmentVariable(EnvironmentVariableConstants.APPLICATION_LOG_LEVEL) || 'info';
+};
+
 const getApplicationRoutePrefix = () => {
   return (
     EnvironmentVariableUtils.getOptionalEnvironmentVariable(EnvironmentVariableConstants.APPLICATION_ROUTE_PREFIX) || ''
@@ -52,11 +56,12 @@ export const configuration = {
   isTest: getRunningEnvironment() === EnvironmentConstants.TEST,
 
   application: {
-    name: pkg.name,
-    version: pkg.version,
+    controllers: getApplicationControllers(),
     description: pkg.description,
+    logLevel: getApplicationLogLevel(),
+    name: pkg.name,
     port: getApplicationPort(),
     routePrefix: getApplicationRoutePrefix(),
-    controllers: getApplicationControllers()
+    version: pkg.version
   }
 };

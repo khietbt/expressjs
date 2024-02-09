@@ -1,17 +1,19 @@
-import path from 'path';
+import { StringConstants } from '@src/constants';
+import * as path from 'path';
+import * as pino from 'pino';
+import * as pretty from 'pino-pretty';
 
-enum LogLevel {
-  SILLY = 'silly',
-  DEBUG = 'debug',
-  TRACE = 'trace',
-  INFO = 'info',
-  WARN = 'warn',
-  ERROR = 'error',
-  FATAL = 'fatal'
-}
+import { configuration } from './configuration';
+
+const logger = pino.default(
+  {
+    level: configuration.application.logLevel
+  },
+  pretty.default()
+);
 
 export class Logger {
-  public static DEFAULT_SCOPE = 'app';
+  public static DEFAULT_SCOPE = configuration.application.name;
   private readonly scope: string;
 
   constructor(scope?: string) {
@@ -20,32 +22,27 @@ export class Logger {
 
   private static parsePathToScope(filepath: string): string {
     if (filepath.indexOf(path.sep) >= 0) {
-      filepath = filepath.replace(process.cwd(), '');
-      filepath = filepath.replace(`${path.sep}src${path.sep}`, '');
-      filepath = filepath.replace(`${path.sep}dist${path.sep}`, '');
-      filepath = filepath.replace('.ts', '');
-      filepath = filepath.replace('.js', '');
-      filepath = filepath.replace(path.sep, ':');
+      filepath = filepath.replace(process.cwd(), StringConstants.EMPTY);
+      filepath = filepath.replace(`${path.sep}src${path.sep}`, StringConstants.EMPTY);
+      filepath = filepath.replace(`${path.sep}dist${path.sep}`, StringConstants.EMPTY);
+      filepath = filepath.replace('.ts', StringConstants.EMPTY);
+      filepath = filepath.replace('.js', StringConstants.EMPTY);
+      filepath = filepath.replace(path.sep, StringConstants.COLON);
     }
     return filepath;
   }
 
-  public silly = (message: string, ...args: any[]): void => this.log(LogLevel.SILLY, message, args);
+  public debug = (message: string, ...args: any[]): void => logger.debug(this.formattedMessage(message), args);
 
-  public debug = (message: string, ...args: any[]): void => this.log(LogLevel.DEBUG, message, args);
+  public trace = (message: string, ...args: any[]): void => logger.trace(this.formattedMessage(message), args);
 
-  public trace = (message: string, ...args: any[]): void => this.log(LogLevel.TRACE, message, args);
+  public info = (message: string, ...args: any[]): void => logger.info(this.formattedMessage(message), args);
 
-  public info = (message: string, ...args: any[]): void => this.log(LogLevel.INFO, message, args);
+  public warn = (message: string, ...args: any[]): void => logger.warn(this.formattedMessage(message), args);
 
-  public warn = (message: string, ...args: any[]): void => this.log(LogLevel.WARN, message, args);
+  public error = (message: string, ...args: any[]): void => logger.error(this.formattedMessage(message), args);
 
-  public error = (message: string, ...args: any[]): void => this.log(LogLevel.ERROR, message, args);
+  public fatal = (message: string, ...args: any[]): void => logger.fatal(this.formattedMessage(message), args);
 
-  public fatal = (message: string, ...args: any[]): void => this.log(LogLevel.FATAL, message, args);
-
-  private log = (level: string, message: string, args: any[]): void =>
-    console.log(`${this.formatScope()} ${level} ${message}`, args);
-
-  private formatScope = (): string => `[${this.scope}]`;
+  private formattedMessage = (message: string): string => `[${this.scope}] ${message}`;
 }

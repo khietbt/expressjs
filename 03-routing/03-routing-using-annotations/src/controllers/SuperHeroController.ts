@@ -1,6 +1,5 @@
+import { AvengerService, SuperHeroService } from '@src/services';
 import { Get, JsonController, Param } from 'routing-controllers';
-
-import { AvengerService, SuperHeroService } from '../services';
 
 @JsonController('/super-heroes')
 export class SuperHeroController {
