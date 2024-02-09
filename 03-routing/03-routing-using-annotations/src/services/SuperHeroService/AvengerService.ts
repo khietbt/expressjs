@@ -1,7 +1,8 @@
-import { SuperHeroModel } from '../../models';
-import { AvengerRepository } from '../../repositories';
-import { SuperHeroService } from '../../services';
-import { ObjectUtils } from '../../utils';
+import { AvengerNotFoundException } from '@src/exceptions';
+import { SuperHeroModel } from '@src/models';
+import { AvengerRepository } from '@src/repositories';
+import { SuperHeroService } from '@src/services';
+import { ObjectUtils } from '@src/utils';
 
 export class AvengerService implements SuperHeroService {
   private readonly avengerRepository: AvengerRepository;
@@ -18,7 +19,7 @@ export class AvengerService implements SuperHeroService {
     const member = await this.avengerRepository.getById(id);
 
     if (ObjectUtils.isUndefined(member)) {
-      throw new Error(`Avenger (id=${id}) not found`);
+      throw new AvengerNotFoundException(id);
     }
 
     return member!;
