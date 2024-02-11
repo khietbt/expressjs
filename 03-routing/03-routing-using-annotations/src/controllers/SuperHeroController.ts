@@ -1,7 +1,9 @@
 import { AvengerService, SuperHeroService } from '@src/services';
 import { Get, JsonController, Param } from 'routing-controllers';
+import { Service } from 'typedi';
 
 @JsonController('/super-heroes')
+@Service()
 export class SuperHeroController {
   private superHeroService: SuperHeroService = new AvengerService();
 

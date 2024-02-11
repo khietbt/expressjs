@@ -1,19 +1,22 @@
-import { createExpressServer } from 'routing-controllers';
+import { Log } from '@src/loggers';
+import { createExpressServer, useContainer } from 'routing-controllers';
+import { Container } from 'typedi';
 
-import { configuration } from './configuration';
-import { Logger } from './Logger';
-
-const log = new Logger(__filename);
+import { ApplicationContext } from './ApplicationContext';
 
 export class Application {
   public static run() {
-    const { controllers, routePrefix, port } = configuration.application;
+    const { controllers, routePrefix, port, isTest } = ApplicationContext.getInstance().getProperties();
+
+    useContainer(Container);
 
     const server = createExpressServer({ controllers, routePrefix });
 
-    if (!configuration.isTest) {
+    if (!isTest) {
       server.listen(port, () => {
-        log.info(`Started listening on port '${port}'`);
+        const log = Log.getLogger(__filename);
+
+        log.error(`Started listening on ${port}`);
       });
     }
   }
