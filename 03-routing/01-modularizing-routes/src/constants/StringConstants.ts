@@ -1,4 +1,5 @@
 export const StringConstants = {
+  COLON: ':',
   COMMA: ',',
   EMPTY: '',
   FUNCTION: 'function',

@@ -6,4 +6,4 @@ const superHeroRouter: Router = Router();
 superHeroRouter.get('/', superHeroController.getAll);
 superHeroRouter.get('/:id', superHeroController.getById);
 
-export { superHeroRouter };
+export default { path: 'super-heroes', router: superHeroRouter };

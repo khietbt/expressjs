@@ -3,7 +3,9 @@ import { SuperHeroModel } from '@src/models';
 import { AvengerRepository } from '@src/repositories';
 import { SuperHeroService } from '@src/services';
 import { ObjectUtils } from '@src/utils';
+import { Service } from 'typedi';
 
+@Service()
 export class AvengerService implements SuperHeroService {
   private readonly avengerRepository: AvengerRepository;
 
