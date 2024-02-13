@@ -1,8 +1,8 @@
 import { ApplicationContext } from '@src/configurations';
-import { LogUtils } from '@src/utils';
 
 import { Logger } from './Logger';
 import { LoggerType } from './LoggerType';
+import { LogUtils } from './LogUtils';
 import { Pino } from './Pino';
 
 export class Log {
@@ -14,6 +14,6 @@ export class Log {
       return new Pino(scope);
     }
 
-    throw new Error('Logger type ${loggerType} is not supported');
+    throw new Error('Logger type ${application.loggerType} is not supported');
   }
 }
