@@ -8,7 +8,11 @@ export class RouterUtils {
   public static loadRouters(routePrefix: string, routerDir: string): Record<string, Router> {
     const baseDir: string = PathUtils.getAbsolutePath(routerDir);
     const pattern: string = `${baseDir}/**/*`;
-    const glob = new Glob(pattern, {});
+    const glob = new Glob(pattern, {
+      ignore: {
+        ignored: (p) => p.isDirectory()
+      }
+    });
 
     const routers: Record<string, Router> = {};
 
