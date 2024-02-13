@@ -7,7 +7,7 @@ import { Pino } from './Pino';
 
 export class Log {
   public static getLogger(filepath?: string): Logger {
-    const { application } = ApplicationContext.instance.configuration;
+    const { application } = ApplicationContext.instance;
     const scope = LogUtils.parsePathToScope(filepath || application.name);
 
     if (application.loggerType === LoggerType.PINO) {

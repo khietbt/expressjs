@@ -51,7 +51,7 @@ export class ApplicationContext {
   private getApplicationRouterDir = (): string =>
     EnvironmentVariableUtils.getEnvironmentVariable(EnvironmentVariable.APPLICATION_ROUTER_DIR);
 
-  public get configuration(): any {
+  public get application(): any {
     return {
       runningEnvironment: this.getRunningEnvironment(),
       isDevelopment: this.getRunningEnvironment() === NodeEnvironment.DEVELOPMENT,
@@ -59,14 +59,12 @@ export class ApplicationContext {
       isProduction: this.getRunningEnvironment() === NodeEnvironment.PRODUCTION,
       isTest: this.getRunningEnvironment() === NodeEnvironment.TEST,
 
-      application: {
-        name: pkg.name,
-        port: this.getApplicationPort(),
-        logLevel: this.getApplicationLogLevel(),
-        loggerType: this.getApplicationLoggerType(),
-        routerDir: this.getApplicationRouterDir(),
-        routePrefix: this.getApplicationRoutePrefix()
-      }
+      name: pkg.name,
+      port: this.getApplicationPort(),
+      logLevel: this.getApplicationLogLevel(),
+      loggerType: this.getApplicationLoggerType(),
+      routerDir: this.getApplicationRouterDir(),
+      routePrefix: this.getApplicationRoutePrefix()
     };
   }
 }

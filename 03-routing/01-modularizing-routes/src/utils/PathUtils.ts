@@ -8,5 +8,5 @@ export class PathUtils {
 
   public static join = (...args: string[]): string => path.join(...args);
 
-  public static getDirPath = (filepath: string): string => path.dirname(filepath);
+  public static dirname = (filepath: string): string => path.dirname(filepath);
 }

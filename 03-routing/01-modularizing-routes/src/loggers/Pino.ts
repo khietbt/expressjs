@@ -13,7 +13,7 @@ export class Pino extends Base implements Logger {
     if (ObjectUtils.isUndefined(this._log)) {
       this._log = pino.default(
         {
-          level: ApplicationContext.instance.configuration.application.logLevel
+          level: ApplicationContext.instance.application.logLevel
         },
         pretty.default()
       );

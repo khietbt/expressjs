@@ -1,21 +1,22 @@
 import { StringConstants } from '@src/constants';
+import { Router } from 'express';
 import { Glob } from 'glob';
 
 import { PathUtils } from './PathUtils';
 
 export class RouterUtils {
-  public static loadRouters(routePrefix: string, routerDir: string): any {
+  public static loadRouters(routePrefix: string, routerDir: string): Record<string, Router> {
     const baseDir: string = PathUtils.getAbsolutePath(routerDir);
     const pattern: string = `${baseDir}/**/*`;
     const glob = new Glob(pattern, {});
 
-    const routers: Record<string, any> = {};
+    const routers: Record<string, Router> = {};
 
     for (const file of glob) {
       /* eslint @typescript-eslint/no-var-requires: "off" */
       const { path, router } = require(file).default;
 
-      const k: string = PathUtils.getDirPath(file).replace(baseDir, StringConstants.EMPTY);
+      const k: string = PathUtils.dirname(file).replace(baseDir, StringConstants.EMPTY);
 
       routers[PathUtils.join(routePrefix, k, path)] = router;
     }
