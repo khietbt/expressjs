@@ -1,7 +1,7 @@
 ---
 title: Modularizing routes
 layout: default
-nav_order: 3
+nav_order: 1
 parent: Routing
 ---
 
@@ -81,7 +81,7 @@ export class AvengersService implements SuperHeroService {
 }
 ```
 
-## Expose APIs
+## Exposing APIs
 
 - Firstly, a controller should be created to use services:
 
@@ -127,3 +127,8 @@ export { superHeroRouter };
 // src/index.ts
 app.use("/api/super-heroes", superHeroRouter);
 ```
+
+## Loading all routers
+
+If all routers are placed in the same directory in the project, loading them
+can be automated by reading and importing all files in that folder.

@@ -21,4 +21,4 @@ kind of boilerplate codes if the project becomes larger. In this case, there
 are 2 choices:
 
 - Modularizing routes
-- Using routes via annotations
+- Routing via decorators
