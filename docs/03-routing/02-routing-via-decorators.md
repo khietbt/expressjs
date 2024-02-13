@@ -25,6 +25,7 @@ Here, `routing-controllers` are necessary libs.
 
 ## Enabling decorators
 
+cp -R 03-routing/01-modularizing-routes 03-routing/02-routing-via-annotations
 Please create a new project based on the last one:
 
 ```typescript
@@ -40,7 +41,8 @@ Here, `tsconfig.json` needs to be updated with 2 new configurations:
 
 ## Using `routing-controllers` and `typedi`
 
-New packages bring some kinds of dependency injection and inversion of control to our project:
+New packages bring some kinds of dependency injection and inversion of control
+to our project:
 
 ```shell
 npm install routing-controllers typedi
@@ -108,3 +110,35 @@ export class SuperHeroController {
   }
 }
 ```
+
+Of course, our `Application` needs to be updated as well:
+
+```typescript
+// miscellaneous/Application.ts
+import { Log } from "@src/loggers";
+import { createExpressServer, useContainer } from "routing-controllers";
+import { Container } from "typedi";
+
+import { ApplicationContext } from "./ApplicationContext";
+
+export class Application {
+  public static run() {
+    const { controllers, routePrefix, port, isTest } =
+      ApplicationContext.getInstance().getProperties();
+
+    useContainer(Container);
+
+    const server = createExpressServer({ controllers, routePrefix });
+
+    if (!isTest) {
+      server.listen(port, () => {
+        const log = Log.getLogger(__filename);
+
+        log.error(`Started listening on ${port}`);
+      });
+    }
+  }
+}
+```
+
+I personally prefer this kind of routing, because it saves a lot of effort, especially useful for small teams.
