@@ -1,6 +1,9 @@
+import { AvengerNotFoundException } from '@src/exceptions';
+import { SuperHeroModel } from '@src/models';
+
 import { SuperHeroService } from './SuperHeroService';
 
-export class AvengersService implements SuperHeroService {
+export class AvengerService implements SuperHeroService {
   avengers: any[] = [
     { id: 1, name: 'Iron Man' },
     { id: 2, name: 'Thor' },
@@ -8,15 +11,15 @@ export class AvengersService implements SuperHeroService {
     { id: 4, name: 'Ant Man' }
   ];
 
-  async getAll(): Promise<any> {
+  async getAll(): Promise<SuperHeroModel[]> {
     return this.avengers;
   }
 
-  async getById(id: number): Promise<any> {
+  async getById(id: number): Promise<SuperHeroModel> {
     const member = this.avengers.find((h) => h.id === id);
 
     if (!member) {
-      throw new Error(`Avenger (id=${id}) not found`);
+      throw new AvengerNotFoundException(id);
     }
 
     return member;

@@ -1,3 +1,4 @@
+// import { SuperHeroModel } from '@src/models';
 import { AvengerService, SuperHeroService } from '@src/services';
 import { ConversionUtils } from '@src/utils';
 import { Request, Response } from 'express';
@@ -5,12 +6,12 @@ import { Request, Response } from 'express';
 const superHeroService: SuperHeroService = new AvengerService();
 
 export const superHeroController = {
-  getAll: async (_req: Request, res: Response): Promise<any> => {
+  getAll: async (_req: Request, res: Response) => {
     res.json(await superHeroService.getAll());
     res.status(200);
   },
 
-  getById: async (req: Request, res: Response): Promise<any> => {
+  getById: async (req: Request, res: Response) => {
     const { id } = req.params;
 
     res.json(await superHeroService.getById(ConversionUtils.toInteger(id)));
