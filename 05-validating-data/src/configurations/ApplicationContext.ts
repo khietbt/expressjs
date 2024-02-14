@@ -42,6 +42,16 @@ export class ApplicationContext {
   private getApplicationLogLevel = (): string =>
     EnvironmentVariableUtils.getEnvironmentVariable(EnvironmentVariable.APPLICATION_LOG_LEVEL);
 
+  private getApplicationControllers = (): string[] =>
+    PathUtils.getAbsolutePaths(
+      EnvironmentVariableUtils.getEnvironmentVariableAsArray(EnvironmentVariable.APPLICATION_CONTROLLERS)
+    );
+
+  private getApplicationMiddelwares = (): string[] =>
+    PathUtils.getAbsolutePaths(
+      EnvironmentVariableUtils.getEnvironmentVariableAsArray(EnvironmentVariable.APPLICATION_MIDDLEWARES)
+    );
+
   private getApplicationRoutePrefix = (): string =>
     EnvironmentVariableUtils.getEnvironmentVariable(EnvironmentVariable.APPLICATION_ROUTE_PREFIX);
 
@@ -64,7 +74,9 @@ export class ApplicationContext {
       logLevel: this.getApplicationLogLevel(),
       loggerType: this.getApplicationLoggerType(),
       routerDir: this.getApplicationRouterDir(),
-      routePrefix: this.getApplicationRoutePrefix()
+      routePrefix: this.getApplicationRoutePrefix(),
+      controllers: this.getApplicationControllers(),
+      middlewares2: this.getApplicationMiddelwares()
     };
   }
 }

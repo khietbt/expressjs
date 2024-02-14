@@ -1,7 +1,6 @@
 import { ApplicationContext } from '@src/configurations';
 import { ObjectUtils } from '@src/utils';
 import * as pino from 'pino';
-import * as pretty from 'pino-pretty';
 
 import { Base } from './Base';
 import { Logger } from './Logger';
@@ -11,12 +10,9 @@ export class Pino extends Base implements Logger {
 
   private static log(): any {
     if (ObjectUtils.isUndefined(this._log)) {
-      this._log = pino.default(
-        {
-          level: ApplicationContext.instance.application.logLevel
-        },
-        pretty.default()
-      );
+      this._log = pino.default({
+        level: ApplicationContext.instance.application.logLevel
+      });
     }
 
     return this._log;

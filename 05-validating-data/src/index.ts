@@ -1,3 +1,6 @@
+import 'reflect-metadata';
+require('express-async-errors');
+
 import { Application } from './miscellanenous/Application';
 
-new Application().run();
+(async () => await new Application().run())();
