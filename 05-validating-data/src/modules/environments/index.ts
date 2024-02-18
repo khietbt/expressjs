@@ -1,7 +1,5 @@
-import { loadConfigurationFile } from './loadEnvironmentFile';
-
-loadConfigurationFile();
-
+export * from './getApplicationLogger';
 export * from './getRunningEnvironment';
-export * from './getApplicationPort';
 export * from './getApplicationLogLevel';
+export * from './getApplicationPort';
+export * from './loadEnvironmentFile';

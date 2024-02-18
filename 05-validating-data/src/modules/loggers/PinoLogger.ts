@@ -4,7 +4,10 @@ import { type Logger } from './Logger';
 import { getCallSite, getPinoLogger } from './loggerUtils';
 
 export class PinoLogger extends BaseLogger implements Logger {
-  public constructor(private readonly level: string) {
+  public constructor(
+    private readonly name: string,
+    private readonly level: string
+  ) {
     super();
   }
 
@@ -37,14 +40,14 @@ export class PinoLogger extends BaseLogger implements Logger {
   }
 
   private getPinoLogger(): pino.Logger {
-    return getPinoLogger(this.level).child(this.getChildLevel());
+    return getPinoLogger(this.name, this.level).child(this.getChildLevel());
   }
 
   protected getChildLevel(): { file: string; line: number } {
     const callSite = getCallSite(4);
 
     return {
-      file: callSite.getFileName(),
+      file: callSite.getFileName().replace(process.cwd(), '.'),
       line: callSite.getLineNumber()
     };
   }

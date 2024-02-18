@@ -1,6 +1,10 @@
 import { type Logger, getLogger } from '../loggers';
 import { getApplicationLogLevel } from './getApplicationLogLevel';
+import { getApplicationName } from './getApplicationName';
 
-export function getApplicationLogger(level: string = getApplicationLogLevel()): Logger {
-  return getLogger(level);
+export function getApplicationLogger(
+  name: string = getApplicationName(),
+  level: string = getApplicationLogLevel()
+): Logger {
+  return getLogger(name, level);
 }
