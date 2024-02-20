@@ -1,4 +1,4 @@
-import { type Logger, getLogger } from '../loggers';
+import { type Logger, getLogger } from '@src/modules/loggers';
 import { getApplicationLogLevel } from './getApplicationLogLevel';
 import { getApplicationName } from './getApplicationName';
 

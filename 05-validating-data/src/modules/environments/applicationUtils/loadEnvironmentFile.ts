@@ -1,9 +1,9 @@
 import { configDotenv } from 'dotenv';
-import { getRunningEnvironment } from './getRunningEnvironment';
+import { getApplicationRunningEnvironment } from './getApplicationRunningEnvironment';
 import { getApplicationLogger } from './getApplicationLogger';
 
 export function loadConfigurationFile(): void {
-  const configurationFile = `.env.${getRunningEnvironment()}`;
+  const configurationFile = `.env.${getApplicationRunningEnvironment()}`;
 
   configDotenv({
     path: configurationFile
