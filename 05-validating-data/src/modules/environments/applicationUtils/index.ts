@@ -3,4 +3,8 @@ export * from './getApplicationLogger';
 export * from './getApplicationName';
 export * from './getApplicationPort';
 export * from './getApplicationRunningEnvironment';
+export * from './isDevelopment';
+export * from './isLocal';
+export * from './isProduction';
+export * from './isStaging';
 export * from './loadEnvironmentFile';

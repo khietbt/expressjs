@@ -1,6 +1,8 @@
-import express, { type Express, type Request, type Response } from 'express';
+import express, { type Express } from 'express';
 import { loadConfigurationFile, getApplicationLogger, getApplicationPort } from '../environments';
 import { type Logger } from '../loggers';
+import { userRouter } from '@src/api/routers/userRouter';
+import bodyParser from 'body-parser';
 
 export class Application {
   private readonly log: Logger;
@@ -14,9 +16,9 @@ export class Application {
     const app: Express = express();
     const port = getApplicationPort();
 
-    app.get('/', (_req: Request, res: Response) => {
-      res.send('Hello world!');
-    });
+    app.use(bodyParser.json());
+
+    app.use('/users', userRouter);
 
     app.listen(port, () => {
       this.log.info(`Started listening on ${port}`);
