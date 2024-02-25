@@ -1,3 +1,3 @@
-export * from './ConversionUtils';
-export * from './ObjectUtils';
-export * from './PathUtils';
+export * from './conversionUtils';
+export * from './objectUtils';
+export * from './pathUtils';

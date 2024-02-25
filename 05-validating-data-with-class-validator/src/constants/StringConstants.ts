@@ -4,6 +4,5 @@ export const StringConstants = {
   EMPTY: '',
   FUNCTION: 'function',
   NULL: 'null',
-  SPACE: ' ',
   UNDEFINED: 'undefined'
 };
