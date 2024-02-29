@@ -1,5 +1,5 @@
 {
-  "name": "05-validating-data-with-class-validator",
+  "name": "01-joi",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -16,10 +16,8 @@
   "author": "khietbt",
   "license": "ISC",
   "dependencies": {
-    "@babel/plugin-transform-export-namespace-from": "^7.23.4",
     "@types/callsite": "^1.0.34",
     "body-parser": "^1.20.2",
-    "class-validator": "^0.14.1",
     "cross-env": "^7.0.3",
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "express": "^4.18.2",
@@ -28,11 +26,7 @@
     "joi": "^17.12.2",
     "multer": "^1.4.5-lts.1",
     "pino": "^8.18.0",
-    "pino-pretty": "^10.3.1",
-    "reflect-metadata": "^0.2.1",
-    "routing-controllers": "^0.10.4",
-    "typedi": "^0.10.0",
-    "typeorm": "^0.3.20"
+    "pino-pretty": "^10.3.1"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
