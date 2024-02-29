@@ -10,4 +10,5 @@ export * from './isDevelopment';
 export * from './isLocal';
 export * from './isProduction';
 export * from './isStaging';
+export * from './isTest';
 export * from './loadEnvironmentFile';

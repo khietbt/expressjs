@@ -2,14 +2,14 @@ import {
   getApplicationControllers,
   getApplicationLogger,
   getApplicationMiddlewares,
-  getApplicationPort
+  getApplicationPort,
+  getApplicationRoutePrefix,
+  isTest
 } from '@src/modules/environments';
-import { getApplicationRoutePrefix } from '@src/modules/environments/applicationUtils/getApplicationRoutePrefix';
-import { isTest } from '@src/modules/environments/applicationUtils/isTest';
 import { createExpressServer } from 'routing-controllers';
 
 export class Application {
-  public run(): void {
+  public async run(): Promise<void> {
     const server = createExpressServer({
       controllers: getApplicationControllers(),
       defaultErrorHandler: false,
