@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "test": "ts-mocha src/**/__tests__/*test.ts"
+    "test": "nyc --check-coverage=true ts-mocha src/**/__tests__/*test.ts"
   },
   "author": "khietbt",
   "license": "ISC",
@@ -72,5 +72,11 @@
       "npm run prettier",
       "git add ."
     ]
+  },
+  "nyc": {
+    "branches": ">80",
+    "lines": ">80",
+    "functions": ">80",
+    "statements": ">80"
   }
 }
