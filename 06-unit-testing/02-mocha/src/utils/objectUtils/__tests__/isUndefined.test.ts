@@ -1,29 +1,30 @@
-import { isNull } from '../isNull';
+import assert from 'assert';
+import { isUndefined } from '../isUndefined';
 
-describe('Running testsuite on isNull', () => {
+describe('Running testsuite on isUndefined', () => {
   it('Testcase 1: Runs with null', () => {
-    expect(isNull(null)).toBe(true);
+    assert.equal(isUndefined(null), false);
   });
 
   it('Testcase 2: Runs with a string', () => {
     const s = 'Hello world!';
 
-    expect(isNull(s)).toBe(false);
+    assert.equal(isUndefined(s), false);
   });
 
   it('Testcase 3: Runs with an integer', () => {
     const i = 3;
 
-    expect(isNull(i)).toBe(false);
+    assert.equal(isUndefined(i), false);
   });
 
   it('Testcase 4: Runs with a float', () => {
     const i = 4.4;
 
-    expect(isNull(i)).toBe(false);
+    assert.equal(isUndefined(i), false);
   });
 
   it('Testcase 5: Runs with an undefined', () => {
-    expect(isNull(undefined)).toBe(false);
+    assert.equal(isUndefined(undefined), true);
   });
 });
