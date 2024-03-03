@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { isUndefined } from '../isUndefined';
 
-describe('Running testsuite on isUndefined', () => {
+describe('Testsuite on isUndefined', () => {
   it('Testcase 1: Runs with null', () => {
     assert.equal(isUndefined(null), false);
   });

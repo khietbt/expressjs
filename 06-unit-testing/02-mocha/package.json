@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "test": "nyc --check-coverage=true ts-mocha src/**/__tests__/*test.ts"
+    "test": "cross-env TS_CONFIG_PATHS=true nyc --check-coverage=true ts-mocha src/**/__tests__/*.test.ts"
   },
   "author": "khietbt",
   "license": "ISC",

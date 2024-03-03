@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { isNull } from '../isNull';
 
-describe('Running testsuite on isNull', () => {
+describe('Testsuite on isNull', () => {
   it('Testcase 1: Runs with null', () => {
     assert.equal(isNull(null), true);
   });

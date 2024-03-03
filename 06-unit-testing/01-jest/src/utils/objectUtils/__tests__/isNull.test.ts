@@ -1,6 +1,6 @@
 import { isNull } from '../isNull';
 
-describe('Running testsuite on isNull', () => {
+describe('Testsuite on isNull', () => {
   it('Testcase 1: Runs with null', () => {
     expect(isNull(null)).toBe(true);
   });

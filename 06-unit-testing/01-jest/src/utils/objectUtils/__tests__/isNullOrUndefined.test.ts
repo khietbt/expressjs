@@ -1,6 +1,6 @@
 import { isNullOrUndefined } from '../isNullOrUndefined';
 
-describe('Running testsuite on isNullOrUndefined', () => {
+describe('Testsuite on isNullOrUndefined', () => {
   test('Testcase 1: Runs with null', () => {
     expect(isNullOrUndefined(null)).toBe(true);
   });
