@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "local": "cross-env NODE_ENV=local npx nodemon",
-    "development": "cross-env NODE_ENV=development npx nodemon",
     "build": "rimraf ./dist && tsc && tsc-alias",
-    "start": "node dist/src/index.js",
+    "development": "cross-env NODE_ENV=development npx nodemon",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "local": "cross-env NODE_ENV=local npx nodemon",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
+    "start": "node dist/src/index.js",
     "test": "jest"
   },
   "author": "khietbt",
@@ -66,6 +66,7 @@
     "*.ts": [
       "npm run lint",
       "npm run prettier",
+      "jest --bail --findRelatedTests",
       "git add ."
     ]
   }
