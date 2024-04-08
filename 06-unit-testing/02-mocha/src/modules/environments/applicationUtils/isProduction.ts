@@ -1,6 +1,6 @@
-import { NodeEnvironment } from '../NodeEnvironment';
+import { NodeEnvironments } from '../NodeEnvironments';
 import { getApplicationRunningEnvironment } from './getApplicationRunningEnvironment';
 
 export function isProduction(): boolean {
-  return getApplicationRunningEnvironment() === NodeEnvironment.PRODUCTION;
+  return getApplicationRunningEnvironment() === NodeEnvironments.PRODUCTION;
 }

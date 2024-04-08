@@ -1,6 +1,6 @@
-import { NodeEnvironment } from '../NodeEnvironment';
+import { NodeEnvironments } from '../NodeEnvironments';
 import { getApplicationRunningEnvironment } from './getApplicationRunningEnvironment';
 
 export function isLocal(): boolean {
-  return getApplicationRunningEnvironment() === NodeEnvironment.LOCAL;
+  return getApplicationRunningEnvironment() === NodeEnvironments.LOCAL;
 }

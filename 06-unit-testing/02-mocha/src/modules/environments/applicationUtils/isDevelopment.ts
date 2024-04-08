@@ -1,6 +1,6 @@
-import { NodeEnvironment } from '../NodeEnvironment';
+import { NodeEnvironments } from '../NodeEnvironments';
 import { getApplicationRunningEnvironment } from './getApplicationRunningEnvironment';
 
 export function isDevelopment(): boolean {
-  return getApplicationRunningEnvironment() === NodeEnvironment.DEVELOPMENT;
+  return getApplicationRunningEnvironment() === NodeEnvironments.DEVELOPMENT;
 }
