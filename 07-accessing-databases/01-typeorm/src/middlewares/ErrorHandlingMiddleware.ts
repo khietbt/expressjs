@@ -1,17 +1,14 @@
-import { NotFoundException } from '@src/exceptions';
+import { BaseException } from '@src/exceptions';
+import { HttpStatuses } from '@src/http-statuses';
 import { type NextFunction, type Request, type Response } from 'express';
-import { BadRequestError, type ExpressErrorMiddlewareInterface, Middleware } from 'routing-controllers';
+import { Middleware, type ExpressErrorMiddlewareInterface } from 'routing-controllers';
 
 function error2status(error: Error): number {
-  if (error instanceof NotFoundException) {
-    return 404;
+  if (error instanceof BaseException) {
+    return error.httpStatus;
   }
 
-  if (error instanceof BadRequestError) {
-    return 400;
-  }
-
-  return 500;
+  return HttpStatuses.INTERNAL_SERVER_ERROR;
 }
 
 @Middleware({ type: 'after' })
