@@ -5,7 +5,7 @@ import {
   getApplicationPort,
   getApplicationRoutePrefix,
   isTest
-} from '@src/modules/environments';
+} from '@src/environments';
 import { createExpressServer } from 'routing-controllers';
 
 export class Application {

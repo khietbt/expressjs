@@ -1,6 +1,6 @@
 import assert from 'assert';
+import { InvalidNumberConversionException } from '../InvalidNumberConversionException';
 import { toInteger } from '../toInteger';
-import { InvalidNumberConversionException } from '@src/exceptions';
 
 describe('Testsuite on toInteger', () => {
   it('Testcase 1. Runs with a valid number', () => {

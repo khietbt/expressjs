@@ -1,4 +1,4 @@
-import { InvalidNumberConversionException } from '@src/exceptions';
+import { InvalidNumberConversionException } from './InvalidNumberConversionException';
 
 export function toInteger(s: string): number {
   if (!/^[-]?\d+$/.test(s)) {

@@ -1,7 +1,7 @@
-import { EnvironmentVariable } from '../EnvironmentVariable';
+import { EnvironmentVariables } from '../EnvironmentVariables';
 import { type NodeEnvironment } from '../NodeEnvironment';
 import { getEnvironmentVariable } from '../environmentVariableUtils';
 
 export function getApplicationRunningEnvironment(): NodeEnvironment {
-  return getEnvironmentVariable(EnvironmentVariable.NODE_ENV) as NodeEnvironment;
+  return getEnvironmentVariable(EnvironmentVariables.NODE_ENV) as NodeEnvironment;
 }

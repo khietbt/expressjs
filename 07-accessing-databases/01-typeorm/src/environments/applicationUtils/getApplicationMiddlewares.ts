@@ -1,7 +1,7 @@
 import { getAbsolutePaths } from '@src/utils';
 import { getEnvironmentVariableAsArray } from '../environmentVariableUtils';
-import { EnvironmentVariable } from '../EnvironmentVariable';
+import { EnvironmentVariables } from '../EnvironmentVariables';
 
 export function getApplicationMiddlewares(): string[] {
-  return getAbsolutePaths(getEnvironmentVariableAsArray(EnvironmentVariable.APPLICATION_MIDDLEWARES));
+  return getAbsolutePaths(getEnvironmentVariableAsArray(EnvironmentVariables.APPLICATION_MIDDLEWARES));
 }

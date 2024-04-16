@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { loadConfigurationFile } from '@src/modules/environments';
+import { loadConfigurationFile } from './environments';
 import { Application } from './miscellaneous';
 
 loadConfigurationFile();

@@ -1,7 +1,7 @@
 import { getAbsolutePaths } from '@src/utils';
+import { EnvironmentVariables } from '../EnvironmentVariables';
 import { getEnvironmentVariableAsArray } from '../environmentVariableUtils';
-import { EnvironmentVariable } from '../EnvironmentVariable';
 
 export function getApplicationControllers(): string[] {
-  return getAbsolutePaths(getEnvironmentVariableAsArray(EnvironmentVariable.APPLICATION_CONTROLLERS));
+  return getAbsolutePaths(getEnvironmentVariableAsArray(EnvironmentVariables.APPLICATION_CONTROLLERS));
 }

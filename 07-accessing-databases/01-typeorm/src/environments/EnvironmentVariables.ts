@@ -1,4 +1,4 @@
-export enum EnvironmentVariable {
+export enum EnvironmentVariables {
   APPLICATION_CONTROLLERS,
   APPLICATION_LOG_LEVEL,
   APPLICATION_MIDDLEWARES,

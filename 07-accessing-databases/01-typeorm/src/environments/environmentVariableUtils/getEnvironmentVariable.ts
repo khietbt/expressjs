@@ -1,8 +1,8 @@
 import { StringConstants } from '@src/constants';
-import { type EnvironmentVariable } from '../EnvironmentVariable';
-import { getOptionalEnvironmentVariable } from './getOptionalEnvironmentVariable';
 import { isUndefined } from '@src/utils';
+import { type EnvironmentVariable } from '../EnvironmentVariable';
 import { EnvironmentVariableNotFoundException } from '../EnvironmentVariableNotFoundException';
+import { getOptionalEnvironmentVariable } from './getOptionalEnvironmentVariable';
 
 export function getEnvironmentVariable(variable: EnvironmentVariable): string {
   const value = getOptionalEnvironmentVariable(variable);

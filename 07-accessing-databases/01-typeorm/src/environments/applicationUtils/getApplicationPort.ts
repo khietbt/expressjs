@@ -1,10 +1,10 @@
 import { toInteger } from '@src/utils';
-import { EnvironmentVariable } from '../EnvironmentVariable';
+import { EnvironmentVariables } from '../EnvironmentVariables';
 import { InvalidApplicationPortException } from '../InvalidApplicationPortException';
 import { getEnvironmentVariable } from '../environmentVariableUtils';
 
 export function getApplicationPort(): number {
-  const s = getEnvironmentVariable(EnvironmentVariable.APPLICATION_PORT);
+  const s = getEnvironmentVariable(EnvironmentVariables.APPLICATION_PORT);
 
   const p = toInteger(s);
 
