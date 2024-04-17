@@ -1,6 +1,6 @@
 import { groupBy } from '../groupBy';
 
-describe('Testsutie of groupBy', () => {
+describe('Testsuite of groupBy', () => {
   it('should group elements by a numeric key', () => {
     const original = [
       { id: 1, name: 'Alice' },

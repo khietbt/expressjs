@@ -1,6 +1,7 @@
 {
-  "cSpell.words": [
-    "topdir"
-  ],
-  "editor.fontFamily": "'DejaVu Sans Mono.', 'monospace', monospace"
+  "cSpell.words": ["topdir"],
+  "editor.fontFamily": "'DejaVu Sans Mono.', 'monospace', monospace",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": false
 }

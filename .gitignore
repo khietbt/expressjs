@@ -71,4 +71,5 @@ yarn-debug.log*
 .idea
 *.iml
 dist
-.vscode
+.vscode/
+.vscode/*
