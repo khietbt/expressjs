@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { loadConfigurationFile } from './environments';
 import { Application } from './miscellaneous';
+import { loadConfigurationFile } from './configurations';
 
 loadConfigurationFile();
 

@@ -1,5 +1,4 @@
-import { EnvironmentVariables } from '../EnvironmentVariables';
-import { getEnvironmentVariable } from '../environmentVariableUtils';
+import { getEnvironmentVariable, EnvironmentVariables } from '@src/environments';
 
 export function getApplicationRoutePrefix(): string {
   return getEnvironmentVariable(EnvironmentVariables.APPLICATION_ROUTE_PREFIX);

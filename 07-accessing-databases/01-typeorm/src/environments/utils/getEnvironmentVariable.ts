@@ -1,7 +1,7 @@
 import { StringConstants } from '@src/constants';
 import { isUndefined } from '@src/utils';
-import { type EnvironmentVariable } from '../EnvironmentVariable';
-import { EnvironmentVariableNotFoundException } from '../EnvironmentVariableNotFoundException';
+import { EnvironmentVariableNotFoundException } from '../exceptions';
+import { type EnvironmentVariable } from '../types';
 import { getOptionalEnvironmentVariable } from './getOptionalEnvironmentVariable';
 
 export function getEnvironmentVariable(variable: EnvironmentVariable): string {

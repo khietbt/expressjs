@@ -5,9 +5,7 @@ import { getApplicationLogger } from './getApplicationLogger';
 export function loadConfigurationFile(): void {
   const configurationFile = `.env.${getApplicationRunningEnvironment()}`;
 
-  configDotenv({
-    path: configurationFile
-  });
+  configDotenv({ path: configurationFile });
 
   getApplicationLogger().info(`Loaded configurations from ${configurationFile}`);
 }

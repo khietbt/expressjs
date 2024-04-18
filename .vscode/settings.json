@@ -3,5 +3,7 @@
   "editor.fontFamily": "'DejaVu Sans Mono.', 'monospace', monospace",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnPaste": false
+  "editor.formatOnPaste": false,
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single"
 }

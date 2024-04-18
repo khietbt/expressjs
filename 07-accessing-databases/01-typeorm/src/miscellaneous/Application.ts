@@ -1,11 +1,11 @@
 import {
   getApplicationControllers,
-  getApplicationLogger,
   getApplicationMiddlewares,
-  getApplicationPort,
   getApplicationRoutePrefix,
-  isTest
-} from '@src/environments';
+  isTest,
+  getApplicationPort,
+  getApplicationLogger
+} from '@src/configurations';
 import { createExpressServer } from 'routing-controllers';
 
 export class Application {

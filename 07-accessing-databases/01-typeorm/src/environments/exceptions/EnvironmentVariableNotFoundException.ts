@@ -1,7 +1,6 @@
 import { NotFoundException } from '@src/exceptions';
-
-import { type EnvironmentVariable } from './EnvironmentVariable';
-import { EnvironmentVariables } from './EnvironmentVariables';
+import { EnvironmentVariables } from '../enums';
+import { type EnvironmentVariable } from '../types';
 
 export class EnvironmentVariableNotFoundException extends NotFoundException {
   public constructor(k: EnvironmentVariable) {

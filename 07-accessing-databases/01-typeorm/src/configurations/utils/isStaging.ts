@@ -1,4 +1,4 @@
-import { NodeEnvironments } from '../NodeEnvironments';
+import { NodeEnvironments } from '@src/environments';
 import { getApplicationRunningEnvironment } from './getApplicationRunningEnvironment';
 
 export function isStaging(): boolean {
