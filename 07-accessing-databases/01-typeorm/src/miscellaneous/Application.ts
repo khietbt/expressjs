@@ -1,25 +1,18 @@
-import {
-  getApplicationControllers,
-  getApplicationMiddlewares,
-  getApplicationRoutePrefix,
-  isTest,
-  getApplicationPort,
-  getApplicationLogger
-} from '@src/configurations';
+import { configuration } from '@src/configurations';
+import { getLogger } from '@src/loggers';
 import { createExpressServer } from 'routing-controllers';
 
 export class Application {
   public run(): void {
-    const server = createExpressServer({
-      controllers: getApplicationControllers(),
-      defaultErrorHandler: false,
-      middlewares: getApplicationMiddlewares(),
-      routePrefix: getApplicationRoutePrefix()
-    });
+    const server = createExpressServer(configuration.application);
 
-    if (!isTest()) {
-      server.listen(getApplicationPort(), () => {
-        getApplicationLogger().info(`Started listening on ${getApplicationPort()}`);
+    if (!configuration.isTest) {
+      const port = configuration.application.port;
+
+      const logger = getLogger(configuration.application.name, configuration.application.logLevel);
+
+      server.listen(port, () => {
+        logger.info(`Started listening on ${port}`);
       });
     }
   }

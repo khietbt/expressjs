@@ -1,11 +1,11 @@
 import { isUndefined } from '@src/utils';
 import * as pino from 'pino';
 
-const loggers: Record<string, pino.Logger> = {};
+let logger: pino.Logger;
 
 export function getPinoLogger(name: string, level: string): pino.Logger {
-  if (isUndefined(loggers[level])) {
-    loggers[level] = pino.default({
+  if (isUndefined(logger)) {
+    logger = pino.default({
       level,
       timestamp: pino.stdTimeFunctions.isoTime,
       formatters: {
@@ -23,5 +23,5 @@ export function getPinoLogger(name: string, level: string): pino.Logger {
     });
   }
 
-  return loggers[level];
+  return logger;
 }
