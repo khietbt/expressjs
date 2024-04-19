@@ -10,12 +10,9 @@ import {
   isLocal,
   isProduction,
   isStaging,
-  isTest,
-  loadConfigurationFile
+  isTest
 } from './utils';
 import { getApplicationVersion } from './utils/getApplicationVersion';
-
-loadConfigurationFile();
 
 export const configuration = {
   runningEnvironment: getApplicationRunningEnvironment(),

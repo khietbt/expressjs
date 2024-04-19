@@ -1,4 +1,13 @@
 import 'reflect-metadata';
-import { Application } from './miscellaneous';
+// import { Application } from './miscellaneous';
+import { bootstrapMicroframework } from 'microframework';
+import { environmentVariableLoader } from './environments';
+import { getApplicationLogger, getApplicationName, getApplicationVersion } from './configurations/utils';
 
-new Application().run();
+bootstrapMicroframework({
+  loaders: [environmentVariableLoader]
+})
+  .then(() => {
+    getApplicationLogger().error(`${getApplicationName()}@${getApplicationVersion()}`);
+  })
+  .catch(() => {});
