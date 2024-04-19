@@ -1,13 +1,13 @@
 import 'reflect-metadata';
-// import { Application } from './miscellaneous';
+
 import { bootstrapMicroframework } from 'microframework';
+import { configurationLoader } from './configurations';
 import { environmentVariableLoader } from './environments';
-import { getApplicationLogger, getApplicationName, getApplicationVersion } from './configurations/utils';
 
 bootstrapMicroframework({
-  loaders: [environmentVariableLoader]
+  loaders: [environmentVariableLoader, configurationLoader]
 })
-  .then(() => {
-    getApplicationLogger().error(`${getApplicationName()}@${getApplicationVersion()}`);
-  })
-  .catch(() => {});
+  .then((_microframework) => {})
+  .catch((error) => {
+    console.error('Application is crashed due to an error: ' + error);
+  });

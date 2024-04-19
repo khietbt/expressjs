@@ -1,9 +1,9 @@
-import { configuration } from '@src/configurations';
+import { type Configuration } from '@src/configurations';
 import { getLogger } from '@src/loggers';
 import { createExpressServer } from 'routing-controllers';
 
 export class Application {
-  public run(): void {
+  public run(configuration: Configuration): void {
     const server = createExpressServer(configuration.application);
 
     if (!configuration.isTest) {
