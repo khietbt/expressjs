@@ -1,3 +1,4 @@
 export * from './applicationLoader';
-export * from './environmentLoader';
 export * from './configurationLoader';
+export * from './environmentLoader';
+export * from './loggerLoader';

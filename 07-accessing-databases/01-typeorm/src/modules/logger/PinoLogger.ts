@@ -1,7 +1,7 @@
 import type pino from 'pino';
 import { BaseLogger } from './BaseLogger';
 import { type Logger } from './Logger';
-import { getCallSite, getPinoLogger } from './loggerUtils';
+import { getCallSite, getPinoLogger } from './utils';
 
 export class PinoLogger extends BaseLogger implements Logger {
   public constructor(

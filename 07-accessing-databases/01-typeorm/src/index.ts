@@ -1,12 +1,14 @@
 import 'reflect-metadata';
 
 import { bootstrapMicroframework } from 'microframework';
-import { configurationLoader, environmentLoader, expressApplicationLoader } from './loaders';
+import { configurationLoader, environmentLoader, expressApplicationLoader, loggerLoader } from './loaders';
 
 bootstrapMicroframework({
-  loaders: [environmentLoader, configurationLoader, expressApplicationLoader]
-})
-  .then((_microframework) => {})
-  .catch((error) => {
-    console.error('Application is crashed due to an error: ' + error);
-  });
+  config: {
+    showBootstrapTime: true,
+    bootstrapTimeout: 10
+  },
+  loaders: [environmentLoader, configurationLoader, loggerLoader, expressApplicationLoader]
+}).catch((error) => {
+  console.error('Application is crashed due to an error: ' + error);
+});

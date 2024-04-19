@@ -1,5 +1,6 @@
 export enum Modules {
   APPLICATION = 'application',
   CONFIGURATION = 'configuration',
-  ENVIRONMENT = 'environment'
+  ENVIRONMENT = 'environment',
+  LOGGER = 'logger'
 }
