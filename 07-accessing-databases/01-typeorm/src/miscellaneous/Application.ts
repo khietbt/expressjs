@@ -1,5 +1,5 @@
-import { type Configuration } from '@src/configurations';
 import { getLogger } from '@src/loggers';
+import { type Configuration } from '@src/modules';
 import { createExpressServer } from 'routing-controllers';
 
 export class Application {

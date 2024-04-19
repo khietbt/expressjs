@@ -1,4 +1,4 @@
-import { getEnvironmentVariableAsArray, EnvironmentVariables } from '@src/environments';
+import { getEnvironmentVariableAsArray, EnvironmentVariables } from '@src/modules/environment';
 import { getAbsolutePaths } from '@src/utils';
 
 export function getApplicationMiddlewares(): string[] {

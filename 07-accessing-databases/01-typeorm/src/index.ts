@@ -1,11 +1,10 @@
 import 'reflect-metadata';
 
 import { bootstrapMicroframework } from 'microframework';
-import { configurationLoader } from './configurations';
-import { environmentVariableLoader } from './environments';
+import { configurationLoader, environmentLoader, expressApplicationLoader } from './loaders';
 
 bootstrapMicroframework({
-  loaders: [environmentVariableLoader, configurationLoader]
+  loaders: [environmentLoader, configurationLoader, expressApplicationLoader]
 })
   .then((_microframework) => {})
   .catch((error) => {
