@@ -1,5 +1,4 @@
 import {
-  Modules,
   getApplicationControllers,
   getApplicationLogLevel,
   getApplicationMiddlewares,
@@ -16,12 +15,9 @@ import {
   type Configuration
 } from '@src/modules';
 import { type MicroframeworkLoader, type MicroframeworkSettings } from 'microframework';
+import { setConfiguration } from './utils';
 
-export const configurationLoader: MicroframeworkLoader = (settings?: MicroframeworkSettings) => {
-  if (settings === undefined) {
-    return;
-  }
-
+export const configurationLoader: MicroframeworkLoader = (_settings?: MicroframeworkSettings) => {
   const configuration: Configuration = {
     runningEnvironment: getApplicationRunningEnvironment(),
 
@@ -45,5 +41,5 @@ export const configurationLoader: MicroframeworkLoader = (settings?: Microframew
     }
   };
 
-  settings.setData(Modules.CONFIGURATION, configuration);
+  setConfiguration(configuration);
 };

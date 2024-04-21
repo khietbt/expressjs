@@ -1,24 +1,22 @@
-import { type Configuration, Modules } from '@src/modules';
+import { type Configuration } from '@src/modules';
 import { type MicroframeworkLoader, type MicroframeworkSettings } from 'microframework';
 import { createExpressServer } from 'routing-controllers';
 import { getLogger } from './utils/getLogger';
+import { getConfiguration, setExpress } from './utils';
+import { type Express } from 'express';
 
-export const expressApplicationLoader: MicroframeworkLoader = (settings?: MicroframeworkSettings) => {
-  const configuration: Configuration = settings?.getData(Modules.CONFIGURATION);
+export const applicationLoader: MicroframeworkLoader = (_settings?: MicroframeworkSettings) => {
+  const configuration: Configuration = getConfiguration();
 
-  if (settings === undefined || configuration === undefined) {
-    return;
-  }
-
-  const expressApplication = createExpressServer(configuration.application);
+  const express = createExpressServer(configuration.application) as Express;
 
   if (!configuration.isTest) {
     const port = configuration.application.port;
 
-    expressApplication.listen(port, () => {
-      getLogger(settings).error(`Started listening on ${port}`);
+    express.listen(port, () => {
+      getLogger().error(`Started listening on ${port}`);
     });
   }
 
-  settings.setData(Modules.APPLICATION, expressApplication);
+  setExpress(express);
 };

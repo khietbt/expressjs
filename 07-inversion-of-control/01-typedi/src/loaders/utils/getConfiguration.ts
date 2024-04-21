@@ -1,6 +1,6 @@
 import { type Configuration, Modules } from '@src/modules';
-import { type MicroframeworkSettings } from 'microframework';
+import Container from 'typedi';
 
-export function getConfiguration(settings?: MicroframeworkSettings): Configuration {
-  return settings?.getData(Modules.CONFIGURATION);
+export function getConfiguration(): Configuration {
+  return Container.get<Configuration>(Modules.CONFIGURATION);
 }
