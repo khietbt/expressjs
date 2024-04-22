@@ -5,7 +5,7 @@ import { getLogger } from './utils/getLogger';
 import { getConfiguration, setExpress } from './utils';
 import { type Express } from 'express';
 
-export const applicationLoader: MicroframeworkLoader = (_settings?: MicroframeworkSettings) => {
+export const expressLoader: MicroframeworkLoader = (_settings?: MicroframeworkSettings) => {
   const configuration: Configuration = getConfiguration();
 
   const express = createExpressServer(configuration.application) as Express;
