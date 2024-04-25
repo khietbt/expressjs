@@ -1,4 +1,4 @@
-import { getEnvironmentVariable, EnvironmentVariables } from '@src/modules';
+import { EnvironmentVariables, getEnvironmentVariable } from '@src/modules/environment';
 import { getAbsolutePath } from '@src/utils';
 import { configDotenv } from 'dotenv';
 import { type MicroframeworkLoader, type MicroframeworkSettings } from 'microframework';

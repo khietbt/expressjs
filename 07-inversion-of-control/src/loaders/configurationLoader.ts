@@ -1,4 +1,5 @@
 import {
+  Configuration,
   getApplicationControllers,
   getApplicationLogLevel,
   getApplicationMiddlewares,
@@ -11,11 +12,10 @@ import {
   isLocal,
   isProduction,
   isStaging,
-  isTest,
-  type Configuration
-} from '@src/modules';
+  isTest
+} from '@src/modules/configuration';
 import { type MicroframeworkLoader, type MicroframeworkSettings } from 'microframework';
-import { setConfiguration } from './utils';
+import Container from 'typedi';
 
 export const configurationLoader: MicroframeworkLoader = (_settings?: MicroframeworkSettings) => {
   const configuration: Configuration = {
@@ -41,5 +41,5 @@ export const configurationLoader: MicroframeworkLoader = (_settings?: Microframe
     }
   };
 
-  setConfiguration(configuration);
+  Container.set(Configuration, configuration);
 };

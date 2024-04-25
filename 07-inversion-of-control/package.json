@@ -17,7 +17,7 @@
   "author": "khietbt",
   "license": "ISC",
   "dependencies": {
-    "@babel/plugin-transform-export-namespace-from": "^7.23.4",
+    "@babel/plugin-transform-export-namespace-from": "^7.24.1",
     "@types/callsite": "^1.0.34",
     "body-parser": "^1.20.2",
     "class-validator": "^0.14.1",
