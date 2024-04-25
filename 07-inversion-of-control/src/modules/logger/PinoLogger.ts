@@ -1,14 +1,33 @@
-import type pino from 'pino';
+import * as pino from 'pino';
 import { BaseLogger } from './BaseLogger';
 import { type Logger } from './Logger';
-import { getCallSite, getPinoLogger } from './utils';
+import { getCallSite } from './utils';
 
 export class PinoLogger extends BaseLogger implements Logger {
+  private readonly logger: pino.Logger;
+
   public constructor(
     private readonly name: string,
     private readonly level: string
   ) {
     super();
+
+    this.logger = pino.default({
+      level: this.level,
+      timestamp: pino.stdTimeFunctions.isoTime,
+      formatters: {
+        level: (label, _number) => {
+          return {
+            level: label
+          };
+        },
+        bindings: (_bindings) => {
+          return {
+            applicationName: this.name
+          };
+        }
+      }
+    });
   }
 
   public debug(message: string): void {
@@ -40,7 +59,7 @@ export class PinoLogger extends BaseLogger implements Logger {
   }
 
   private getPinoLogger(): pino.Logger {
-    return getPinoLogger(this.name, this.level).child(this.getChildLevel());
+    return this.logger.child(this.getChildLevel());
   }
 
   protected getChildLevel(): { file: string; line: number } {
