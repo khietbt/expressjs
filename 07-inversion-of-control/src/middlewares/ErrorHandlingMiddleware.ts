@@ -2,6 +2,7 @@ import { BaseException } from '@src/exceptions';
 import { HttpStatuses } from '@src/http-statuses';
 import { type NextFunction, type Request, type Response } from 'express';
 import { Middleware, type ExpressErrorMiddlewareInterface } from 'routing-controllers';
+import { Service } from 'typedi';
 
 function error2status(error: Error): number {
   if (error instanceof BaseException) {
@@ -11,6 +12,7 @@ function error2status(error: Error): number {
   return HttpStatuses.INTERNAL_SERVER_ERROR;
 }
 
+@Service()
 @Middleware({ type: 'after' })
 export class ErrorHandlingMiddleware implements ExpressErrorMiddlewareInterface {
   public error(error: Error, _request: Request, response: Response, next: NextFunction): void {
