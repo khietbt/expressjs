@@ -1,4 +1,4 @@
-export interface Configuration {
+export class Configuration {
   runningEnvironment: string;
 
   isDevelopment: boolean;

@@ -1,6 +1,6 @@
-import { type Configuration, Modules } from '@src/modules';
+import { Configuration } from '@src/modules';
 import Container from 'typedi';
 
 export function getConfiguration(): Configuration {
-  return Container.get<Configuration>(Modules.CONFIGURATION);
+  return Container.get<Configuration>(Configuration);
 }

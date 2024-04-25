@@ -3,4 +3,3 @@ export * from './getConfiguration';
 export * from './getLogger';
 export * from './setExpress';
 export * from './setConfiguration';
-export * from './setLogger';
