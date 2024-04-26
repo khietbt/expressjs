@@ -1,17 +1,14 @@
-import { Body, Delete, Get, JsonController, Param, Post } from 'routing-controllers';
+import { Body, Delete, Get, JsonController, Param, Patch, Post } from 'routing-controllers';
 import { Service } from 'typedi';
 import { UserService } from './UserService';
-import { UserCreationRequest } from './UserCreationRequest';
-import { Logger } from '@src/modules/logger';
 import { StringConstants } from '@src/constants';
+import { UserEntity } from './UserEntity';
+import { toOmitted } from '@src/entities';
 
 @Service()
 @JsonController('/users')
 export class UserController {
-  public constructor(
-    private readonly userService: UserService,
-    private readonly logger: Logger
-  ) {}
+  public constructor(private readonly userService: UserService) {}
 
   @Delete('/:id([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})')
   public async delete(@Param('id') id: string): Promise<unknown> {
@@ -30,8 +27,8 @@ export class UserController {
   // updateMany
 
   @Post()
-  public async createUser(@Body() userCretionRequest: UserCreationRequest): Promise<unknown> {
-    return await this.userService.create(userCretionRequest);
+  public async create(@Body() user: Partial<UserEntity>): Promise<unknown> {
+    return await this.userService.create(toOmitted(user));
   }
 
   @Get()
@@ -41,7 +38,6 @@ export class UserController {
 
   @Get('/:id([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})')
   public async getOne(@Param('id') id: string): Promise<unknown> {
-    this.logger.info('Process getOne');
     return await this.userService.getOne(id);
   }
 
@@ -49,7 +45,11 @@ export class UserController {
     '/:ids([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(,[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})+)'
   )
   public async getMany(@Param('ids') ids: string): Promise<unknown> {
-    this.logger.info('Process many');
     return await this.userService.getMany(ids.split(StringConstants.COMMA));
+  }
+
+  @Patch('/:id([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})')
+  public async update(@Param('id') id: string, @Body() patch: Partial<UserEntity>): Promise<unknown> {
+    return await this.userService.update(id, toOmitted(patch));
   }
 }

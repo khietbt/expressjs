@@ -1,8 +1,8 @@
 import { Service } from 'typedi';
 import { UserEntity } from './UserEntity';
 import { UserRepository } from './UserRepository';
-import { UserCreationRequest } from './UserCreationRequest';
 import { In } from 'typeorm';
+import { Omitted } from '@src/entities';
 
 @Service()
 export class UserService {
@@ -12,8 +12,8 @@ export class UserService {
     return await this.userRepository.find();
   }
 
-  public async create(userCreationRequest: UserCreationRequest): Promise<unknown> {
-    return await this.userRepository.save(userCreationRequest as Partial<UserEntity>);
+  public async create(user: Omitted<Partial<UserEntity>>): Promise<unknown> {
+    return await this.userRepository.save(user);
   }
 
   public async delete(id: string): Promise<unknown> {
@@ -30,5 +30,9 @@ export class UserService {
 
   public async deleteMany(ids: string[]): Promise<unknown> {
     return await this.userRepository.softDelete({ id: In(ids) });
+  }
+
+  public async update(id: string, patch: Omitted<Partial<UserEntity>>): Promise<unknown> {
+    return await this.userRepository.update({ id }, patch);
   }
 }
