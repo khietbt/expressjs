@@ -4,7 +4,7 @@ import { UserEntity } from './UserEntity';
 
 @Service()
 export class UserRepository extends Repository<UserEntity> {
-  public constructor(dataSource: DataSource) {
+  public constructor(readonly dataSource: DataSource) {
     super(UserEntity, dataSource.createEntityManager());
   }
 }
