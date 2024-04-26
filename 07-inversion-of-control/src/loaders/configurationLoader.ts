@@ -1,7 +1,6 @@
 import {
   Configuration,
   getApplicationControllers,
-  getApplicationEntities,
   getApplicationLogLevel,
   getApplicationMiddlewares,
   getApplicationName,
@@ -9,6 +8,9 @@ import {
   getApplicationRoutePrefix,
   getApplicationRunningEnvironment,
   getApplicationVersion,
+  getDatabaseEntities,
+  getDatabaseType,
+  getDatabaseUrl,
   isDevelopment,
   isLocal,
   isProduction,
@@ -17,6 +19,8 @@ import {
 } from '@src/modules/configuration';
 import { type MicroframeworkLoader, type MicroframeworkSettings } from 'microframework';
 import Container from 'typedi';
+import { EnvironmentVariables, getEnvironmentVariable, getEnvironmentVariableAsArray } from '@src/modules/environment';
+import { getAbsolutePaths, toBoolean } from '@src/utils';
 
 export const configurationLoader: MicroframeworkLoader = (_settings?: MicroframeworkSettings) => {
   const configuration: Configuration = {
@@ -36,10 +40,19 @@ export const configurationLoader: MicroframeworkLoader = (_settings?: Microframe
       logLevel: getApplicationLogLevel(),
 
       controllers: getApplicationControllers(),
-      entities: getApplicationEntities(),
       defaultErrorHandler: false,
       middlewares: getApplicationMiddlewares(),
       routePrefix: getApplicationRoutePrefix()
+    },
+
+    database: {
+      entities: getDatabaseEntities(),
+      logging: toBoolean(getEnvironmentVariable(EnvironmentVariables.DATABASE_LOGGING)),
+      migrations: getAbsolutePaths(getEnvironmentVariableAsArray(EnvironmentVariables.DATABASE_MIGRATIONS)),
+      subscribers: getAbsolutePaths(getEnvironmentVariableAsArray(EnvironmentVariables.DATABASE_SUBCRIBERS)),
+      synchronize: toBoolean(getEnvironmentVariable(EnvironmentVariables.DATABASE_SYNCHRONIZE)),
+      type: getDatabaseType(),
+      url: getDatabaseUrl()
     }
   };
 

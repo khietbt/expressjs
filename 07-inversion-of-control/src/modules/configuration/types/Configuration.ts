@@ -17,7 +17,16 @@ export class Configuration {
     controllers: string[];
     defaultErrorHandler: boolean;
     middlewares: string[];
-    entities: string[];
     routePrefix: string;
+  };
+
+  database: {
+    entities: string[];
+    logging: boolean;
+    migrations: string[];
+    subscribers: string[];
+    synchronize: boolean;
+    type: string;
+    url: string;
   };
 }

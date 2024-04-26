@@ -1,5 +1,4 @@
 export * from './getApplicationControllers';
-export * from './getApplicationEntities';
 export * from './getApplicationLogLevel';
 export * from './getApplicationMiddlewares';
 export * from './getApplicationName';
@@ -7,6 +6,9 @@ export * from './getApplicationPort';
 export * from './getApplicationRoutePrefix';
 export * from './getApplicationRunningEnvironment';
 export * from './getApplicationVersion';
+export * from './getDatabaseEntities';
+export * from './getDatabaseType';
+export * from './getDatabaseUrl';
 export * from './isDevelopment';
 export * from './isLocal';
 export * from './isProduction';
