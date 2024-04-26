@@ -3,9 +3,9 @@ import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'users' })
 export class UserEntity extends BaseEntity {
-  @Column()
+  @Column({ unique: true })
   public name: string;
 
-  @Column()
+  @Column({ unique: true })
   public email: string;
 }
