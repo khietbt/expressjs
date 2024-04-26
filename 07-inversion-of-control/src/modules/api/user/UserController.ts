@@ -23,8 +23,6 @@ export class UserController {
   }
 
   // getList
-  // update
-  // updateMany
 
   @Post()
   public async create(@Body() user: Partial<UserEntity>): Promise<unknown> {
@@ -51,5 +49,12 @@ export class UserController {
   @Patch('/:id([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})')
   public async update(@Param('id') id: string, @Body() patch: Partial<UserEntity>): Promise<unknown> {
     return await this.userService.update(id, toOmitted(patch));
+  }
+
+  @Patch(
+    '/:ids([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(,[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})+)'
+  )
+  public async updateMany(@Param('ids') ids: string, @Body() patch: Partial<UserEntity>): Promise<unknown> {
+    return await this.userService.updateMany(ids.split(StringConstants.COMMA), toOmitted(patch));
   }
 }

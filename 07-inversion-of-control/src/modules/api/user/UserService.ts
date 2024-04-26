@@ -35,4 +35,8 @@ export class UserService {
   public async update(id: string, patch: Omitted<Partial<UserEntity>>): Promise<unknown> {
     return await this.userRepository.update({ id }, patch);
   }
+
+  public async updateMany(ids: string[], patch: Omitted<Partial<UserEntity>>): Promise<unknown> {
+    return await this.userRepository.update({ id: In(ids) }, patch);
+  }
 }
