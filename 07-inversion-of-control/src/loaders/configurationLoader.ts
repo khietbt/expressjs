@@ -1,6 +1,7 @@
 import {
   Configuration,
   getApplicationControllers,
+  getApplicationEntities,
   getApplicationLogLevel,
   getApplicationMiddlewares,
   getApplicationName,
@@ -35,6 +36,7 @@ export const configurationLoader: MicroframeworkLoader = (_settings?: Microframe
       logLevel: getApplicationLogLevel(),
 
       controllers: getApplicationControllers(),
+      entities: getApplicationEntities(),
       defaultErrorHandler: false,
       middlewares: getApplicationMiddlewares(),
       routePrefix: getApplicationRoutePrefix()

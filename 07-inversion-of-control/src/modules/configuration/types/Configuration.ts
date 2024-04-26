@@ -17,6 +17,7 @@ export class Configuration {
     controllers: string[];
     defaultErrorHandler: boolean;
     middlewares: string[];
+    entities: string[];
     routePrefix: string;
   };
 }

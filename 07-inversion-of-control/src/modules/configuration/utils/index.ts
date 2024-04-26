@@ -1,4 +1,5 @@
 export * from './getApplicationControllers';
+export * from './getApplicationEntities';
 export * from './getApplicationLogLevel';
 export * from './getApplicationMiddlewares';
 export * from './getApplicationName';

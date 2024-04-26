@@ -1,19 +1,14 @@
 import { Get, JsonController } from 'routing-controllers';
 import { Service } from 'typedi';
-import { UserService } from '../services/UserService';
-import { Logger } from '../../logger';
+import { UserService } from './UserService';
 
 @Service()
 @JsonController('/users')
 export class UserController {
-  public constructor(
-    private readonly userService: UserService,
-    private readonly logger: Logger
-  ) {}
+  public constructor(private readonly userService: UserService) {}
 
   @Get()
   public async getAllUsers(): Promise<unknown> {
-    this.logger.info('abc');
     return await this.userService.getAll();
   }
 }
