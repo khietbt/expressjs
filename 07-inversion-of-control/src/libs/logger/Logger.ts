@@ -1,5 +1,5 @@
 import * as pino from 'pino';
-import { getCallSite } from './utils';
+import { getCallSite } from '../utils';
 import { type ILogger } from './ILogger';
 
 export class Logger implements ILogger {

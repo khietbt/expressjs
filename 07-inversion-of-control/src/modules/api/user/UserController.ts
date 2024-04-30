@@ -3,7 +3,6 @@ import { Service } from 'typedi';
 import { UserService } from './UserService';
 import { StringConstants } from '@src/libs/constants';
 import { UserEntity } from './UserEntity';
-import { toOmitted } from '@src/libs/entities';
 
 @Service()
 @JsonController('/users')
@@ -26,7 +25,7 @@ export class UserController {
 
   @Post()
   public async create(@Body() user: Partial<UserEntity>): Promise<unknown> {
-    return await this.userService.create(toOmitted(user));
+    return await this.userService.create(user);
   }
 
   @Get()
@@ -47,14 +46,14 @@ export class UserController {
   }
 
   @Patch('/:id([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})')
-  public async update(@Param('id') id: string, @Body() patch: Partial<UserEntity>): Promise<unknown> {
-    return await this.userService.update(id, toOmitted(patch));
+  public async update(@Param('id') id: string, @Body() changes: Partial<UserEntity>): Promise<unknown> {
+    return await this.userService.update(id, changes);
   }
 
   @Patch(
     '/:ids([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(,[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})+)'
   )
-  public async updateMany(@Param('ids') ids: string, @Body() patch: Partial<UserEntity>): Promise<unknown> {
-    return await this.userService.updateMany(ids.split(StringConstants.COMMA), toOmitted(patch));
+  public async updateMany(@Param('ids') ids: string, @Body() changes: Partial<UserEntity>): Promise<unknown> {
+    return await this.userService.updateMany(ids.split(StringConstants.COMMA), changes);
   }
 }
