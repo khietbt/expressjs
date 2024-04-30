@@ -1,7 +1,7 @@
 import { Service } from 'typedi';
 import { UserEntity } from './UserEntity';
 import { UserRepository } from './UserRepository';
-import { EntityService } from '@src/services';
+import { EntityService } from '@src/libs/services';
 
 @Service()
 export class UserService extends EntityService<UserEntity> {

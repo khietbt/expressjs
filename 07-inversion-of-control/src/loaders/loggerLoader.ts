@@ -1,7 +1,7 @@
-import { Logger } from '@src/modules/logger';
+import { Logger } from '@src/libs/logger';
 import { type MicroframeworkLoader, type MicroframeworkSettings } from 'microframework';
 import Container from 'typedi';
-import { Configuration } from '@src/modules/configuration';
+import { Configuration } from '@src/libs/configuration';
 
 export const loggerLoader: MicroframeworkLoader = (_settings?: MicroframeworkSettings) => {
   const configuration = Container.get(Configuration);

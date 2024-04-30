@@ -1,5 +1,5 @@
-import { BaseException } from '@src/exceptions';
-import { HttpStatuses } from '@src/http-statuses';
+import { BaseException } from '@src/libs/exceptions';
+import { HttpStatuses } from '@src/libs/http-statuses';
 import { type NextFunction, type Request, type Response } from 'express';
 import { Middleware, type ExpressErrorMiddlewareInterface } from 'routing-controllers';
 import { Service } from 'typedi';

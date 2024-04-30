@@ -1,4 +1,4 @@
-import { BaseEntity } from '@src/entities';
+import { BaseEntity } from '@src/libs/entities';
 import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'users' })

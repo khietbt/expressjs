@@ -16,11 +16,11 @@ import {
   isProduction,
   isStaging,
   isTest
-} from '@src/modules/configuration';
+} from '@src/libs/configuration';
 import { type MicroframeworkLoader, type MicroframeworkSettings } from 'microframework';
 import Container from 'typedi';
-import { EnvironmentVariables, getEnvironmentVariable, getEnvironmentVariableAsArray } from '@src/modules/environment';
-import { getAbsolutePaths, toBoolean } from '@src/utils';
+import { EnvironmentVariables, getEnvironmentVariable, getEnvironmentVariableAsArray } from '@src/libs/environment';
+import { getAbsolutePaths, toBoolean } from '@src/libs/utils';
 
 export const configurationLoader: MicroframeworkLoader = (_settings?: MicroframeworkSettings) => {
   const configuration: Configuration = {

@@ -1,5 +1,5 @@
-import { Application } from '@src/modules/application';
-import { Configuration } from '@src/modules/configuration';
+import { Application } from '@src/libs/application';
+import { Configuration } from '@src/libs/configuration';
 import { type MicroframeworkLoader, type MicroframeworkSettings } from 'microframework';
 import Container from 'typedi';
 

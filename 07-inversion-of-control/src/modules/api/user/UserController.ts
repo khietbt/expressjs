@@ -1,9 +1,9 @@
 import { Body, Delete, Get, JsonController, Param, Patch, Post } from 'routing-controllers';
 import { Service } from 'typedi';
 import { UserService } from './UserService';
-import { StringConstants } from '@src/constants';
+import { StringConstants } from '@src/libs/constants';
 import { UserEntity } from './UserEntity';
-import { toOmitted } from '@src/entities';
+import { toOmitted } from '@src/libs/entities';
 
 @Service()
 @JsonController('/users')

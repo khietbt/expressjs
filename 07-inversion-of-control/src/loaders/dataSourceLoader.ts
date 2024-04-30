@@ -1,4 +1,4 @@
-import { Configuration } from '@src/modules/configuration';
+import { Configuration } from '@src/libs/configuration';
 import { type MicroframeworkLoader, type MicroframeworkSettings } from 'microframework';
 import Container from 'typedi';
 import { DataSource, type DataSourceOptions } from 'typeorm';
