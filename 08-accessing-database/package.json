@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint .",
     "local": "nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "cd .. && husky 08-accessing-database/.husky"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +34,7 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-simple-import-sort": "^12.1.0",
+    "husky": "^9.0.11",
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
