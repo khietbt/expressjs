@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf ./dist && tsc && tsc-alias",
     "lint": "eslint .",
-    "local": "nodemon",
+    "local": "cross-env NODE_ENV=local npx nodemon",
     "test": "jest"
   },
   "keywords": [],
@@ -18,7 +18,9 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "helmet": "^7.1.0",
-    "pino": "^9.0.0"
+    "mysql2": "^3.9.7",
+    "pino": "^9.0.0",
+    "sequelize": "^6.37.3"
   },
   "devDependencies": {
     "@types/callsite": "^1.0.34",
@@ -29,6 +31,7 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.8",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "eslint-config-love": "^47.0.0",
     "eslint-config-prettier": "^9.1.0",
