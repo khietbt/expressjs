@@ -43,6 +43,13 @@ DATABASE_TYPE=mysql
 DATABASE_URL=mysql://expressjs:expressjs@localhost:3306/expressjs
 ```
 
+Note: The expressjs user should be created using mysql_native_password:
+
+```sql
+CREATE USER 'expressjs'@'%' IDENTIFIED WITH mysql_native_password BY 'expressjs';
+GRANT ALL PRIVILEGES ON express.* TO 'expressjs'@'%';
+```
+
 Certainly, some utils should be created for using these values more easily:
 
 ```text
@@ -77,12 +84,12 @@ import Container from "typedi";
 import { DataSource, type DataSourceOptions } from "typeorm";
 
 export const dataSourceLoader: MicroframeworkLoader = async (
-  _settings?: MicroframeworkSettings,
+  _settings?: MicroframeworkSettings
 ) => {
   const configuration = Container.get(Configuration);
 
   const dataSource = new DataSource(
-    configuration.database as unknown as DataSourceOptions,
+    configuration.database as unknown as DataSourceOptions
   );
 
   await dataSource.initialize();
