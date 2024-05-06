@@ -3,8 +3,10 @@ import { BaseModel } from "./BaseModel";
 import { baseProperties } from "./baseProperties";
 
 export class UserModel extends BaseModel {
-  declare name: string;
-  declare email: string;
+  public declare name: string;
+  public declare email: string;
+
+  public static associate(): void { }
 }
 
 export const initializeUserModel = (sequelize: Sequelize): void => {
