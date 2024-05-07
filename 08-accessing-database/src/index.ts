@@ -1,10 +1,10 @@
 import 'reflect-metadata';
 
-import { EnvironmentInitializer, LoggerInitializer, SequelizeInitializer } from './initializers';
+import { LoggerInitializer, SequelizeInitializer } from './initializers';
 import { type Initializer } from './initializers/Initializer';
+import { getDatabaseUrl } from './libs/utils/environmentUtils';
 
 const initializers: Initializer[] = [
-  new EnvironmentInitializer(),
   new LoggerInitializer(),
   new SequelizeInitializer()
 ]
