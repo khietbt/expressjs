@@ -2,8 +2,9 @@ import 'reflect-metadata';
 
 import { DataSourceInitializer, LoggerInitializer, type Initializer } from './initializers';
 import { container } from 'tsyringe';
-import { DataSource } from 'typeorm';
 import { Logger } from './libs';
+import { UserService } from './modules/user/UserService';
+// import { UserRepository } from './modules/user/UserRepository';
 
 const initializers: Initializer[] = [new LoggerInitializer(), new DataSourceInitializer()];
 
@@ -12,14 +13,19 @@ const startServer = async (): Promise<void> => {
     await initializer.run();
   }
 
-  const dataSource = container.resolve(DataSource);
   const logger = container.resolve(Logger);
+  // const userRepository = container.resolve(UserRepository);
 
-  const users = await dataSource.createEntityManager().query('SELECT * FROM users');
+
+  const userService = container.resolve(UserService);
+
+  const users = await userService.getAll();
+  // const users = await userRepository.find();
 
   users.forEach((user: unknown) => {
     logger.info(JSON.stringify(user));
   });
+  logger.info("FINISHED");
 };
 
 startServer().catch((_e) => {});
