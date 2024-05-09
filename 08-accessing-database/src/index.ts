@@ -1,56 +1,25 @@
 import 'reflect-metadata';
 
-import { LoggerInitializer, SequelizeInitializer } from './initializers';
-import { type Initializer } from './initializers/Initializer';
-import { getDatabaseUrl } from './libs/utils/environmentUtils';
+import { DataSourceInitializer, LoggerInitializer, type Initializer } from './initializers';
+import { container } from 'tsyringe';
+import { DataSource } from 'typeorm';
+import { Logger } from './libs';
 
-const initializers: Initializer[] = [
-  new LoggerInitializer(),
-  new SequelizeInitializer()
-]
+const initializers: Initializer[] = [new LoggerInitializer(), new DataSourceInitializer()];
 
 const startServer = async (): Promise<void> => {
   for (const initializer of initializers) {
     await initializer.run();
   }
-}
 
-startServer()
-  .catch((_e) => { });
-// import { getApplicationRunningEnvironment, getDatabaseUrl } from './libs/utils/environmentUtils';
-// import { getAbsolutePath } from './libs/utils/pathUtils';
-// import { configDotenv } from 'dotenv';
-// import { UserModel, initializeUserModel } from './models/UserModel';
-// import { Sequelize } from 'sequelize';
+  const dataSource = container.resolve(DataSource);
+  const logger = container.resolve(Logger);
 
-// // const runningEnvironment = getApplicationRunningEnvironment();
+  const users = await dataSource.createEntityManager().query('SELECT * FROM users');
 
-// // const configurationFile = getAbsolutePath(`.env.${runningEnvironment}`);
+  users.forEach((user: unknown) => {
+    logger.info(JSON.stringify(user));
+  });
+};
 
-// // configDotenv({ path: configurationFile });
-
-// // console.log(configurationFile);
-// // console.log(getDatabaseUrl());
-
-// // const sequelize = new Sequelize(getDatabaseUrl()) // Example for postgres
-
-// // const main = async (): Promise<void> => {
-// //   try {
-// //     await sequelize.authenticate();
-// //     console.log('Connection has been established successfully.');
-
-// //     initializeUserModel(sequelize);
-
-// //     const users = await UserModel.findAll();
-
-// //     users.forEach((user) => {
-// //       console.log(user.toJSON());
-// //     });
-
-// //   } catch (error) {
-// //     console.error('Unable to connect to the database:', error);
-// //   }
-// // };
-
-// // main()
-// //   .catch((_error) => { })
+startServer().catch((_e) => {});
