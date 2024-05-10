@@ -13,5 +13,7 @@ export enum EnvironmentVariables {
   DATABASE_TYPE,
   DATABASE_URL,
   // running environment
-  NODE_ENV
+  NODE_ENV,
+  npm_package_name,
+  npm_package_version
 }

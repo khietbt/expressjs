@@ -1,5 +1,5 @@
-import * as _package from '@topdir/package.json';
+import { getEnvironmentVariable, EnvironmentVariables } from '@src/libs/environment';
 
 export function getApplicationName(): string {
-  return _package.name;
+  return getEnvironmentVariable(EnvironmentVariables.npm_package_name);
 }

@@ -1,4 +1,4 @@
-import { BaseModel } from '@topdir/src/libs';
+import { BaseModel } from '@src/libs';
 import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'users' })

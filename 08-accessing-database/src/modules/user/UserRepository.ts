@@ -1,7 +1,7 @@
-import { BaseRepository } from '@topdir/src/libs';
+import { BaseRepository } from '@src/libs';
 import { delay, inject, injectable } from 'tsyringe';
-import { UserModel } from './UserModel';
 import { DataSource } from 'typeorm';
+import { UserModel } from './UserModel';
 
 @injectable()
 export class UserRepository extends BaseRepository<UserModel> {
