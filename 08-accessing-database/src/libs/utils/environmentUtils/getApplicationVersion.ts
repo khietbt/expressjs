@@ -1,5 +1,5 @@
-import { getEnvironmentVariable, EnvironmentVariables } from '@src/libs/environment';
+import { version } from '@src/../package.json';
 
 export function getApplicationVersion(): string {
-  return getEnvironmentVariable(EnvironmentVariables.npm_package_version);
+  return version;
 }
