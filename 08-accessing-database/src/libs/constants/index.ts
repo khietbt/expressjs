@@ -1,2 +1,2 @@
-export * from './ObjectConstants';
-export * from './StringConstants';
+export * from './Strings';
+export * from './Values';

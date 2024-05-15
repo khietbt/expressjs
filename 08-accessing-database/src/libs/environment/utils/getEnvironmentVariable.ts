@@ -1,4 +1,4 @@
-import { StringConstants } from '@src/libs/constants';
+import { Strings } from '@src/libs/constants';
 import { isUndefined } from '@src/libs/utils';
 import { EnvironmentVariableNotFoundException } from '../exceptions';
 import { type EnvironmentVariable } from '../types';
@@ -11,5 +11,5 @@ export function getEnvironmentVariable(variable: EnvironmentVariable): string {
     throw new EnvironmentVariableNotFoundException(variable);
   }
 
-  return value ?? StringConstants.EMPTY;
+  return value ?? Strings.EMPTY;
 }

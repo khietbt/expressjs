@@ -1,4 +1,4 @@
-export const ObjectConstants = {
+export const Values = {
   NULL: null,
   UNDEFINED: undefined
 };
