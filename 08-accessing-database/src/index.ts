@@ -4,7 +4,7 @@ import { DataSourceInitializer, LoggerInitializer, type Initializer } from './in
 import { container } from 'tsyringe';
 import { Logger } from './libs';
 import { UserService } from './modules/user/UserService';
-// import { UserRepository } from './modules/user/UserRepository';
+import { type UserModel } from './modules/user/UserModel';
 
 const initializers: Initializer[] = [new LoggerInitializer(), new DataSourceInitializer()];
 
@@ -14,18 +14,15 @@ const startServer = async (): Promise<void> => {
   }
 
   const logger = container.resolve(Logger);
-  // const userRepository = container.resolve(UserRepository);
-
 
   const userService = container.resolve(UserService);
 
-  const users = await userService.getAll();
-  // const users = await userRepository.find();
+  const users = (await userService.getAll()) as UserModel[];
 
   users.forEach((user: unknown) => {
     logger.info(JSON.stringify(user));
   });
-  logger.info("FINISHED");
+  logger.info('FINISHED');
 };
 
 startServer().catch((_e) => {});

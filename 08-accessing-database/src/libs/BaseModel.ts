@@ -15,4 +15,8 @@ export abstract class BaseModel {
 
   @DeleteDateColumn()
   public deletedAt: Date;
+
+  public toString(): string {
+    return JSON.stringify(this);
+  }
 }
