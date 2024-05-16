@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "Linting before commiting"
@@ -6,9 +6,17 @@ echo
 
 CHANGED_DIRS=$(git diff-index --name-only HEAD | grep -v '^\.' | cut -d/ -f1 | sort -u)
 
-for DIRNAME in ${CHANGED_DIRS}; do
+if [[ -z "${CHANGED_DIRS[@]}" ]]; then
+  echo "No change found"
+
+  exit 0
+fi
+
+for DIRNAME in ${CHANGED_DIRS[*]}; do
   echo "Started linting changes in ${DIRNAME}"
   cd $PWD/${DIRNAME} && npx lint-staged
   echo "Finished linting changes in ${DIRNAME}"
   echo
 done
+
+echo "Linted source code"
