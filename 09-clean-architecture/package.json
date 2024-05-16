@@ -13,6 +13,8 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
+    "@mfederczuk/deeptools": "^2.1.0-indev01",
+    "@types/uuid": "^9.0.8",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
