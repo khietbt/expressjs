@@ -4,7 +4,7 @@ import { isNullOrUndefined } from '../utils';
 import { type Primitive } from './Primitive';
 import { type Composite } from './Composite';
 
-export abstract class ValueObject<T extends Primitive | Composite> {
+export class ValueObject<T extends Primitive | Composite> {
   public constructor(public value: T) {
     if (isNullOrUndefined(value)) {
       throw new InvalidParameterException(`Value must be not null or undefined`);

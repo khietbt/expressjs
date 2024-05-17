@@ -1,6 +1,6 @@
 import { v4, validate } from 'uuid';
 import { StringValueObject } from './StringValueObject';
-import { InvalidParameterException } from './exceptions';
+import { InvalidParameterException } from '../exceptions';
 
 export class UuidValueObject extends StringValueObject {
   public constructor(value: string) {

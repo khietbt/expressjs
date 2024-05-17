@@ -1,7 +1,7 @@
-import { type Nullable } from './types';
-import { InvalidParameterException } from './exceptions';
+import { type Nullable } from '../types';
+import { InvalidParameterException } from '../exceptions';
 
-export abstract class ValueObject<T> {
+export class ValueObject<T> {
   public constructor(public readonly value: T) {
     this.ensureValueIsDefined();
   }
