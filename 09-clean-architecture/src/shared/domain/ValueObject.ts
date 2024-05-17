@@ -1,5 +1,5 @@
-import { InvalidParameterException } from '@src/libs/exceptions';
-import { type Nullable } from './Nullable';
+import { type Nullable } from './types';
+import { InvalidParameterException } from './exceptions';
 
 export abstract class ValueObject<T> {
   public constructor(public readonly value: T) {
@@ -21,7 +21,7 @@ export abstract class ValueObject<T> {
 
   private ensureValueIsDefined(): void {
     if (this.value === null || this.value === undefined) {
-      throw new InvalidParameterException(`'value' must be defined`);
+      throw new InvalidParameterException(`<${this.constructor.name}> does not allow the defined value`);
     }
   }
 }

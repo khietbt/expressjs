@@ -1,4 +1,4 @@
-import { type ExceptionCode } from '../types/ExceptionCode';
+import { type ExceptionCode } from '../types';
 
 export class Exception extends Error {
   public constructor(
