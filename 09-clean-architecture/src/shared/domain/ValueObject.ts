@@ -1,4 +1,3 @@
-import { deepEquals } from '@mfederczuk/deeptools';
 import { type Nullable } from './Nullable';
 
 export abstract class ValueObject<T> {
@@ -13,7 +12,7 @@ export abstract class ValueObject<T> {
       other !== null &&
       other !== undefined &&
       other.constructor.name === this.constructor.name &&
-      deepEquals(this, other)
+      this.toString() === other.toString()
     );
   }
 }
