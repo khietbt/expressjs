@@ -2,7 +2,7 @@ import { PrimaryGeneratedColumn } from 'typeorm';
 
 export abstract class TypeOrmModel {
   @PrimaryGeneratedColumn('uuid')
-  public id?: string;
+  public id: string;
 
   // @VersionColumn()
   // public version: number;
