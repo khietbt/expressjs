@@ -1,6 +1,6 @@
 import { validate } from 'uuid';
 import { StringValueObject } from './StringValueObject';
-import { type Uuid } from './Uuid';
+import { type Uuid } from '../types/Uuid';
 import { InvalidParameterException } from '../exceptions';
 
 export class UuidValueObject extends StringValueObject {
