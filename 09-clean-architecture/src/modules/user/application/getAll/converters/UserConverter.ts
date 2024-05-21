@@ -1,4 +1,4 @@
-import { User } from '@src/modules/user/domain';
+import { type User } from '@src/modules/user/domain';
 import { Converter } from '@src/shared';
 import { SingleResponse } from '../SingleResponse';
 

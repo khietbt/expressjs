@@ -1,3 +1,3 @@
-import { SingleResponse } from './SingleResponse';
+import { type SingleResponse } from './SingleResponse';
 
 export type GetAllResponse = SingleResponse[];

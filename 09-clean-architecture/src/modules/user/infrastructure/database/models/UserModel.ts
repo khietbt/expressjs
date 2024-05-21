@@ -1,9 +1,11 @@
 import { TypeOrmModel } from '@src/shared/infrastructure';
-import { Entity } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'users' })
 export class UserModel extends TypeOrmModel {
+  @Column()
   name: string;
 
+  @Column()
   email: string;
 }

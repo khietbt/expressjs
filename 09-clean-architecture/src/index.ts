@@ -27,7 +27,13 @@ const startServer = async (): Promise<void> => {
 
   const users = await getAllUseCase.execute();
 
+  users.forEach((u) => {
+    logger.info(JSON.stringify(u));
+  });
+
   logger.info('FINISHED');
 };
 
-startServer().catch((_e) => { });
+startServer().catch((e) => {
+  console.error(e);
+});

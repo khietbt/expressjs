@@ -1,1 +1,1 @@
-export interface GetAllRequest {}
+export type GetAllRequest = Record<never, never>;
