@@ -1,7 +1,7 @@
 import { v4, validate } from 'uuid';
 import { StringValueObject } from './StringValueObject';
-import { InvalidParameterException } from '../exceptions';
 import { isNullOrUndefined } from '@src/libs/utils';
+import { InvalidParameterException } from '@src/libs/exceptions';
 
 export class UuidValueObject extends StringValueObject {
   public constructor(value: string) {
@@ -20,7 +20,10 @@ export class UuidValueObject extends StringValueObject {
     }
 
     if (!validate(this.value)) {
-      throw new InvalidParameterException(`<${this.constructor.name}> does not allow the value <${this.value}>`);
+      throw new InvalidParameterException(
+        `<${this.constructor.name}> does not allow the value <${this.value}>`,
+        this.value
+      );
     }
   }
 }

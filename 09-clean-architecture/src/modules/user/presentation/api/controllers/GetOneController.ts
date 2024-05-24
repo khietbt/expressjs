@@ -15,12 +15,8 @@ export class GetOneController extends Controller {
       return;
     }
 
-    try {
-      const response = await this.getOneUseCase.execute({ id });
+    const response = await this.getOneUseCase.execute({ id });
 
-      this.ok(res, response);
-    } catch (e) {
-      this.notFound(res, (e as Error).message);
-    }
+    this.ok(res, response);
   }
 }
