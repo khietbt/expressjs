@@ -1,10 +1,10 @@
 import express from 'express';
 import { v1Router } from './v1Router';
-import { getApplicationPort } from '@src/libs/utils/environmentUtils';
+import { getApplicationPort, getApplicationRoutePrefix } from '@src/libs/utils/environmentUtils';
 
 const application = express();
 
-application.use('/api/v1', v1Router);
+application.use(getApplicationRoutePrefix(), v1Router);
 
 const port = getApplicationPort();
 

@@ -1,4 +1,5 @@
-import { Entity, type Nullable } from '@src/shared/domain';
+import { type Nullable } from '@src/libs/types';
+import { Entity } from '@src/shared/domain';
 import { type UserEmail } from './UserEmail';
 import { type UserId } from './UserId';
 import { type UserName } from './UserName';

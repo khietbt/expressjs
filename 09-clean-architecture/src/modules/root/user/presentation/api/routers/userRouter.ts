@@ -1,4 +1,4 @@
 import { UserRouter } from '@src/modules/user/presentation';
-import { getAllController } from '../controllers';
+import { getAllController, getOneController } from '../controllers';
 
-export const userRouter: UserRouter = new UserRouter(getAllController);
+export const userRouter: UserRouter = new UserRouter(getAllController, getOneController);

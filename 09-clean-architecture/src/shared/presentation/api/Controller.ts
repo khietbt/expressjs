@@ -13,9 +13,9 @@ export abstract class Controller {
     }
   }
 
-  // public static jsonResponse(res: express.Response, code: number, message: string) {
-  //   return res.status(code).json({ message });
-  // }
+  public static jsonResponse(res: express.Response, code: number, message: string): void {
+    res.status(code).json({ message });
+  }
 
   public ok<T>(res: express.Response, dto?: T): void {
     if (dto !== null && dto !== undefined) {
@@ -47,9 +47,9 @@ export abstract class Controller {
   //   return Controller.jsonResponse(res, 403, message || 'Forbidden');
   // }
   //
-  // public notFound(res: express.Response, message?: string) {
-  //   return Controller.jsonResponse(res, 404, message || 'Not found');
-  // }
+  public notFound(res: express.Response, message?: string): void {
+    Controller.jsonResponse(res, 404, message ?? 'Not found');
+  }
   //
   // public conflict(res: express.Response, message?: string) {
   //   return Controller.jsonResponse(res, 409, message || 'Conflict');

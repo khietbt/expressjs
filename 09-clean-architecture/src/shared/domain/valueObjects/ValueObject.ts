@@ -1,4 +1,4 @@
-import { type Nullable } from '../types';
+import { type Nullable } from '@src/libs/types';
 
 export class ValueObject<T> {
   public constructor(public readonly value: T) {}
