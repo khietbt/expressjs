@@ -7,16 +7,14 @@ export class GetOneController extends Controller {
     super();
   }
 
-  protected async executeInternal(req: Request, res: Response): Promise<void> {
-    const id = req.params.id;
+  protected async executeInternal(request: Request, response: Response): Promise<void> {
+    const id = request.params.id;
 
     if (id === undefined) {
-      this.fail(res, `Path variable 'id' missing`);
+      this.fail(response, `Path variable 'id' missing`);
       return;
     }
 
-    const response = await this.getOneUseCase.execute({ id });
-
-    this.ok(res, response);
+    this.ok(response, await this.getOneUseCase.execute({ id }));
   }
 }

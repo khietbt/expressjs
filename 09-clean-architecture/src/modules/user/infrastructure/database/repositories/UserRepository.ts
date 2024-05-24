@@ -1,9 +1,9 @@
 import { type UserId, type IUserRepository, type User } from '@src/modules/user/domain';
 import { TypeOrmRepository } from '@src/shared/infrastructure/database';
 import { UserModel } from '../models';
-import { UserConverter } from '../converters/UserConverter';
 import { type DataSource } from 'typeorm';
 import { type Nullable } from '@src/libs/types';
+import { UserModelToUserConverter } from '../converters';
 
 export class UserRepository extends TypeOrmRepository<UserModel> implements IUserRepository {
   public constructor(dataSource: DataSource) {
@@ -12,9 +12,9 @@ export class UserRepository extends TypeOrmRepository<UserModel> implements IUse
 
   public async getAll(): Promise<User[]> {
     const users = await this.find({});
-    const converter = new UserConverter();
+    const converter = new UserModelToUserConverter();
 
-    return users.map((u) => converter.from(u));
+    return users.map((u) => converter.transform(u));
   }
 
   public async getOne(id: UserId): Promise<Nullable<User>> {
@@ -24,8 +24,8 @@ export class UserRepository extends TypeOrmRepository<UserModel> implements IUse
       return null;
     }
 
-    const converter = new UserConverter();
+    const converter = new UserModelToUserConverter();
 
-    return converter.from(user);
+    return converter.transform(user);
   }
 }

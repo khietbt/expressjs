@@ -10,6 +10,6 @@ export class GetAllUseCase implements IUseCase<GetAllRequest, GetAllResponse> {
   public async execute(_request?: GetAllRequest): Promise<GetAllResponse> {
     const users = await this.userRepository.getAll();
 
-    return users.map((u) => new UserConverter().to(u));
+    return users.map((u) => new UserConverter().transform(u));
   }
 }

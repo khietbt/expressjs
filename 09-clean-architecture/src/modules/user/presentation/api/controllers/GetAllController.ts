@@ -7,9 +7,7 @@ export class GetAllController extends Controller {
     super();
   }
 
-  protected async executeInternal(_req: Request, res: Response): Promise<void> {
-    const responses = await this.getAllUseCase.execute();
-
-    this.ok(res, responses);
+  protected async executeInternal(_request: Request, response: Response): Promise<void> {
+    this.ok(response, await this.getAllUseCase.execute());
   }
 }

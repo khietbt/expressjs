@@ -3,18 +3,18 @@ import { NotFoundException } from '@src/libs/exceptions';
 import type * as express from 'express';
 
 export abstract class Controller {
-  protected abstract executeInternal(req: express.Request, res: express.Response): Promise<void>;
+  protected abstract executeInternal(request: express.Request, response: express.Response): Promise<unknown>;
 
-  public async execute(req: express.Request, res: express.Response): Promise<void> {
+  public async execute(request: express.Request, response: express.Response): Promise<void> {
     try {
-      await this.executeInternal(req, res);
+      this.ok(response, await this.executeInternal(request, response));
     } catch (e: unknown) {
       if (e instanceof NotFoundException) {
-        this.notFound(res, e);
+        this.notFound(response, e);
         return;
       }
 
-      this.fail(res, e);
+      this.fail(response, e);
     }
   }
 
