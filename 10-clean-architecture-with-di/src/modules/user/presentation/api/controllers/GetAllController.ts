@@ -1,9 +1,11 @@
 import { Controller } from '@src/shared/presentation';
-import { type GetAllUseCase } from '../../../application';
 import { type Request, type Response } from 'express';
+import { delay, inject, injectable } from 'tsyringe';
+import { GetAllUseCase } from '../../../application';
 
+@injectable()
 export class GetAllController extends Controller {
-  public constructor(public readonly getAllUseCase: GetAllUseCase) {
+  public constructor(@inject(delay(() => GetAllUseCase)) private readonly getAllUseCase: GetAllUseCase) {
     super();
   }
 

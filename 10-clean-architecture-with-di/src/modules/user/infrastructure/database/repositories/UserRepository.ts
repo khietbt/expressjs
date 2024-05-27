@@ -1,12 +1,14 @@
 import { type UserId, type IUserRepository, type User } from '@src/modules/user/domain';
 import { TypeOrmRepository } from '@src/shared/infrastructure/database';
 import { UserModel } from '../models';
-import { type DataSource } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { type Nullable } from '@src/libs/types';
 import { UserModelToUserConverter } from '../converters';
+import { delay, inject, injectable } from 'tsyringe';
 
+@injectable()
 export class UserRepository extends TypeOrmRepository<UserModel> implements IUserRepository {
-  public constructor(dataSource: DataSource) {
+  public constructor(@inject(delay(() => DataSource)) readonly dataSource: DataSource) {
     super(UserModel, dataSource);
   }
 

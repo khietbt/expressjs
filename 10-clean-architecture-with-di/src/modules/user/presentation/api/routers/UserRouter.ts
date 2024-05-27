@@ -1,11 +1,14 @@
+import { Controller } from '@src/shared/presentation';
 import { Router, type Request, type Response } from 'express';
-import { type GetAllController } from '../controllers';
-import { type GetOneController } from '../controllers/GetOneController';
+import { delay, inject, injectable } from 'tsyringe';
+import { GetAllController } from '../controllers';
+import { GetOneController } from '../controllers/GetOneController';
 
+@injectable()
 export class UserRouter {
   public constructor(
-    private readonly getAllController: GetAllController,
-    private readonly getOneController: GetOneController
+    @inject(delay(() => GetAllController)) private readonly getAllController: Controller,
+    @inject(delay(() => GetOneController)) private readonly getOneController: Controller
   ) {}
 
   public toRouter(): Router {

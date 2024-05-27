@@ -1,9 +1,11 @@
-import { type GetOneUseCase } from '@src/modules/user/application';
+import { GetOneUseCase } from '@src/modules/user/application';
 import { Controller } from '@src/shared/presentation';
 import { type Request, type Response } from 'express';
+import { delay, inject, injectable } from 'tsyringe';
 
+@injectable()
 export class GetOneController extends Controller {
-  public constructor(private readonly getOneUseCase: GetOneUseCase) {
+  public constructor(@inject(delay(() => GetOneUseCase)) private readonly getOneUseCase: GetOneUseCase) {
     super();
   }
 
